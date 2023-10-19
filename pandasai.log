@@ -756,3 +756,2286 @@ def analyze_data(dfs: list[pd.DataFrame]) ->dict:
         ```
 2023-10-09 14:02:59 [INFO] Answer: {'type': 'plot', 'value': 'temp_chart.png'}
 2023-10-09 14:02:59 [INFO] Executed in: 107.31094694137573s
+2023-10-13 09:58:18 [INFO] Question: Can you create a metadata for the excel file I passed?
+2023-10-13 09:58:18 [INFO] Running PandasAI with openai LLM...
+2023-10-13 09:58:18 [INFO] Prompt ID: 3acee1fc-1741-4f34-905e-a57be74493c3
+2023-10-13 09:58:19 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 100 rows and 26 columns.
+This is the metadata of the dataframe dfs[0]:
+#,School Name,Location by primary campus,Careers service rank,International board (%),International course experience rank,Internships (%),Threeyear average,Faculty with doctorates (%),International work mobility rank,Rank in 2020,Rank in 2021,Average course length (months),Overall satisfaction,Women on board (%),Female students (%),Female faculty (%),Career progress rank,Salary percentage increase,Programme name,Weighted salary (US$),Value for money rank,Employed at three months (%),International faculty (%),International students (%),Aims achieved (%)
+2,HEC Paris,France,16,83,14,85,2.0,96,11,2.0,2.0,18.0,9.09,42,45,30,52,76.62,Master in Management **,"118,999",44,99 (93),64,56,91.102
+5,ESCP Business School,France,49,95,4,100,6.0,100,19,6.0,7.0,18.0,8.82,68,50,39,64,52.11,Master in Management **,"95,742",78,99 (99),86,94,85.947
+4,Stockholm School of Economics,Sweden,8,43,8,100,6.0,96,4,7.0,8.0,23.6,9.36,43,47,34,33,56.22,Master Program in International Business,"92,235",20,87 (100),48,78,86.973
+3,"Rotterdam School of Management, Erasmus University",Netherlands,32,12,28,97,4.0,96,1,5.0,5.0,19.0,9.18,35,50,30,31,60.51,MSc International Management,"101,961",23,97 (95),56,59,87.263
+1,University of St Gallen,Switzerland,1,53,9,100,1.0,100,3,1.0,1.0,26.0,9.76,33,53,24,69,62.25,Master of Arts in Strategy and International Management,"138,091",15,97 (100),83,93,95.573
+</dataframe>
+
+<conversation>
+User 1: Can you create a metadata for the excel file I passed?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-13 09:58:53 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    metadata = dfs[0].describe(include="all").transpose()
+    metadata["#"] = metadata.index
+    metadata.reset_index(drop=True, inplace=True)
+    metadata.rename(columns={"index": "Column Name"}, inplace=True)
+    
+    return {"type": "dataframe", "value": metadata}
+```
+
+2023-10-13 09:58:53 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    metadata = dfs[0].describe(include='all').transpose()
+    metadata['#'] = metadata.index
+    metadata.reset_index(drop=True, inplace=True)
+    metadata.rename(columns={'index': 'Column Name'}, inplace=True)
+    return {'type': 'dataframe', 'value': metadata}
+        ```
+2023-10-13 09:58:53 [INFO] Answer: {'type': 'dataframe', 'value':     count unique                      top freq       mean        std     min  \
+0   100.0    NaN                      NaN  NaN      50.34  29.006171     1.0   
+1     100    100  University of St Gallen    1        NaN        NaN     NaN   
+2     100     31                   France   24        NaN        NaN     NaN   
+3   100.0    NaN                      NaN  NaN       50.5  29.011492     1.0   
+4   100.0    NaN                      NaN  NaN      45.39  29.808105     0.0   
+5   100.0    NaN                      NaN  NaN      50.05  28.315458     1.0   
+6     100     29                      100   53        NaN        NaN     NaN   
+7    75.0    NaN                      NaN  NaN  44.146667  26.696843     1.0   
+8   100.0    NaN                      NaN  NaN      94.06   7.550263    62.0   
+9   100.0    NaN                      NaN  NaN      50.49  29.019845     1.0   
+10   77.0    NaN                      NaN  NaN  44.324675  26.640611     1.0   
+11   87.0    NaN                      NaN  NaN  47.034483  28.357538     1.0   
+12  100.0    NaN                      NaN  NaN    20.8863   7.071255    8.75   
+13  100.0    NaN                      NaN  NaN     8.8084    0.46736    7.09   
+14  100.0    NaN                      NaN  NaN      38.14  13.270321     0.0   
+15  100.0    NaN                      NaN  NaN      48.25   9.655035    22.0   
+16  100.0    NaN                      NaN  NaN      37.27   8.851017    15.0   
+17  100.0    NaN                      NaN  NaN       50.5  29.011492     1.0   
+18  100.0    NaN                      NaN  NaN    51.4747  17.928312    20.7   
+19    100     56  Master in Management **   18        NaN        NaN     NaN   
+20    100    100                  138,091    1        NaN        NaN     NaN   
+21  100.0    NaN                      NaN  NaN       50.5  29.011492     1.0   
+22    100     89                100 (100)    7        NaN        NaN     NaN   
+23  100.0    NaN                      NaN  NaN      42.95  26.024998     0.0   
+24  100.0    NaN                      NaN  NaN      48.29   29.21128     0.0   
+25  100.0    NaN                      NaN  NaN   85.20105    2.88219  80.182   
+
+       25%      50%       75%     max                                     #  
+0    25.75     50.0      74.5   100.0                                     #  
+1      NaN      NaN       NaN     NaN                           School Name  
+2      NaN      NaN       NaN     NaN            Location by primary campus  
+3    25.75     50.5     75.25   100.0                  Careers service rank  
+4     21.0     42.5     67.25   100.0               International board (%)  
+5    25.75     50.5     75.25    91.0  International course experience rank  
+6      NaN      NaN       NaN     NaN                       Internships (%)  
+7     19.5     41.0      67.5    93.0                     Threeyear average  
+8     91.0     97.0     100.0   100.0           Faculty with doctorates (%)  
+9    25.75     50.5     75.25   100.0      International work mobility rank  
+10    23.0     43.0      67.0    90.0                          Rank in 2020  
+11    22.5     45.0      71.0    99.0                          Rank in 2021  
+12    14.0     22.0      25.0    44.0        Average course length (months)  
+13  8.5375      8.8    9.1625    9.81                  Overall satisfaction  
+14   26.75     40.0      50.0    68.0                    Women on board (%)  
+15    43.0     49.0     53.25    77.0                   Female students (%)  
+16    32.0     36.0      45.0    54.0                    Female faculty (%)  
+17   25.75     50.5     75.25   100.0                  Career progress rank  
+18   38.06    48.09   60.4725  111.84            Salary percentage increase  
+19     NaN      NaN       NaN     NaN                        Programme name  
+20     NaN      NaN       NaN     NaN                 Weighted salary (US$)  
+21   25.75     50.5     75.25   100.0                  Value for money rank  
+22     NaN      NaN       NaN     NaN          Employed at three months (%)  
+23   23.75     43.0      63.0    96.0             International faculty (%)  
+24    26.5     45.0      72.0    98.0            International students (%)  
+25  82.907  84.8865  87.05125  95.573                     Aims achieved (%)  }
+2023-10-13 09:58:53 [INFO] Executed in: 34.79069900512695s
+2023-10-18 20:37:04 [INFO] Question: I see many correlated colums in this like Overall satisfaction 2021, Faculty with doctorates (%) 2021,Weighted salary (US$) 2021, Overall satisfaction 2021 but I do not know how to go forward with this informationto create a model to predict the rank of the university or change in the rank of the university. Can you suggest me some ideas what comes after EDA 
+2023-10-18 20:37:05 [INFO] Running PandasAI with openai LLM...
+2023-10-18 20:37:05 [INFO] Prompt ID: 4322b113-453a-4aa3-b29b-30bd51593304
+2023-10-18 20:38:29 [INFO] Question: Give me the colums correlated to each other with correlation greater than 0.7?
+2023-10-18 20:38:29 [INFO] Running PandasAI with openai LLM...
+2023-10-18 20:38:29 [INFO] Prompt ID: 2bf41c27-dfa4-486b-a10a-a56b4e8b8ae2
+2023-10-18 20:38:29 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 125 rows and 60 columns.
+This is the metadata of the dataframe dfs[0]:
+School Name,LinkedIn Followers,Instagram engagement %,Google Rating,Google Number of Reviews,Research Quality,Citations per Faculty,Average Experience of Faculty,Students per Staff,International board (%) 2022,Threeyear average 2022,Faculty with doctorates (%) 2022,Faculty with doctorates (%) 2021,Overall satisfaction 2022,Overall satisfaction 2021,Women on board (%) 2022,Female faculty (%) 2022,Salary percentage increase 2022,Salary percentage increase 2021,Weighted salary (US$) 2022,Weighted salary (US$) 2021,Value for money rank 2022,Value for money rank 2021,Employed at three months (%) 2022,International faculty (%) 2022,International students (%) 2022,Aims achieved (%) 2022,Internships (%),Average course length (months),Length of Programme(terms),Rank Change 2022-2021,Rank Change 2021-2020,Careers service rank 2022-2021,Careers service rank 2021-2020,International course experience rank 2022-2021,International course experience rank 2021-2020,International work mobility rank 2022-2021,International work mobility rank 2021-2020,Career progress rank 2022-2021,Career progress rank 2021-2020,Value for money rank 2022-2021,Value for money rank 2021-2020,Rank Stability,Careers service Rank Stability,International course experience Rank Stability,International work mobility Rank Stability,Career progress Rank Stability,Value for money Rank Stability,Faculty Change,International Board Change,Women on board Change,International faculty Change,International students Change,Female students (%) 2022 Change,Female faculty (%) 2022 Change,Women on board (%) 2022 Change,Satisfaction Change,International students (%) 2022 Change,International faculty (%) 2022 Change,International board (%) 2022 Change
+University of St Gallen,114985.0,0.68,4.5,217.0,81.4,22.8,10.0,12.9,53.0,1.0,100.0,100.0,9.76,9.82,33.0,24.0,62.25,59.63,138091.0,123999.0,15.0,15.0,97 (100),83.0,93.0,95.573,100,26.0,3.0,0.0,0.0,0.0,0.0,3.0,-1.0,0.0,-7.0,-14.0,-1.0,0.0,-1.0,0.037248404,0.0,0.320256308,0.629340559,0.141871103,0.037248404,0.0,0.0,-0.333333333,-1.0,2.333333333,-1.909090909,-1.909090909,-1.909090909,0.11,-3.636363636,-3.636363636,-3.636363636
+London Business School,536866.0,0.45,4.8,322.0,95.4,55.5,11.0,12.6,81.0,5.0,99.0,99.0,9.57,9.43,43.0,31.0,52.58,61.125,103489.0,100789.0,71.0,67.0,93 (99),85.0,96.0,91.002,30,10.0,3.0,3.0,0.0,0.0,2.0,0.0,0.0,-1.0,0.0,44.0,-26.0,4.0,2.0,0.056979883,0.260869565,0.138564065,0.329212078,0.455193902,0.056979883,0.0,-1.666666667,0.666666667,-0.333333333,0.0,1.111111111,1.111111111,1.111111111,-0.155,-1.818181818,-1.818181818,-1.818181818
+Essec Business School,190577.0,3.28,4.4,266.0,24.9,76.5,10.0,19.4,87.0,5.0,100.0,100.0,9.01,9.26,60.0,36.0,52.43,68.756,96988.0,99804.0,68.0,57.0,98 (95),71.0,64.0,88.716,100,18.0,4.0,0.0,3.0,9.0,1.0,-8.0,0.0,0.0,6.0,26.0,3.0,11.0,8.0,0.136570655,0.373174569,0.385627093,0.158031596,0.252924578,0.136570655,-0.333333333,-4.666666667,-5.0,-4.666666667,-2.666666667,1.333333333,1.333333333,1.333333333,0.18,0.818181818,0.818181818,0.818181818
+HEC Paris,289801.0,0.91,4.4,265.0,38.8,67.3,10.0,,83.0,2.0,96.0,96.0,9.09,9.21,42.0,30.0,76.62,80.648,118999.0,114357.0,44.0,41.0,99 (93),64.0,56.0,91.102,85,18.0,4.0,0.0,0.0,5.0,2.0,4.0,0.0,0.0,6.0,-9.0,9.0,3.0,5.0,0.093591025,0.245326691,0.175451303,0.487086093,0.177556571,0.093591025,1.333333333,0.0,0.0,1.666666667,-0.666666667,-0.272727273,-0.272727273,-0.272727273,0.145,2.454545455,2.454545455,2.454545455
+ESCP Business School,184493.0,1.77,4.2,104.0,,81.1,10.0,,95.0,6.0,100.0,100.0,8.82,8.72,68.0,39.0,52.11,57.454,95742.0,89003.0,78.0,78.0,99 (99),86.0,94.0,85.947,100,18.0,4.0,-2.0,1.0,-18.0,20.0,0.0,0.0,1.0,-6.0,21.0,-13.0,0.0,10.0,0.083517646,0.212778378,0.117647059,0.12906104,0.158792102,0.083517646,0.0,-16.66666667,-9.666666667,-2.0,-2.0,-1.0,-1.0,-1.0,-0.105,-4.454545455,-4.454545455,-4.454545455
+</dataframe>
+
+<conversation>
+User 1: Give me the colums correlated to each other with correlation greater than 0.7?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-18 20:38:57 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Get the first dataframe from the list
+    df = dfs[0]
+    
+    # Calculate the correlation matrix
+    corr_matrix = df.corr()
+    
+    # Find the columns with correlation greater than 0.7
+    correlated_columns = []
+    for column in corr_matrix.columns:
+        correlated_columns.extend(corr_matrix[corr_matrix[column] > 0.7].index.tolist())
+    
+    # Remove duplicates and sort the columns
+    correlated_columns = sorted(list(set(correlated_columns)))
+    
+    # Return the result as a dataframe
+    result_df = pd.DataFrame(correlated_columns, columns=["Correlated Columns"])
+    
+    return {"type": "dataframe", "value": result_df}
+```
+
+2023-10-18 20:38:57 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    df = dfs[0]
+    corr_matrix = df.corr()
+    correlated_columns = []
+    for column in corr_matrix.columns:
+        correlated_columns.extend(corr_matrix[corr_matrix[column] > 0.7].index.tolist())
+    correlated_columns = sorted(list(set(correlated_columns)))
+    result_df = pd.DataFrame(correlated_columns, columns=['Correlated Columns'])
+    return {'type': 'dataframe', 'value': result_df}
+        ```
+2023-10-18 20:38:57 [WARNING] Error of executing code
+2023-10-18 20:38:57 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-10-18 20:38:57 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 20, in analyze_data
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 10707, in corr
+    mat = data.to_numpy(dtype=float, na_value=np.nan, copy=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 1892, in to_numpy
+    result = self._mgr.as_array(dtype=dtype, copy=copy, na_value=na_value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1656, in as_array
+    arr = self._interleave(dtype=dtype, na_value=na_value)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1715, in _interleave
+    result[rl.indexer] = arr
+    ~~~~~~^^^^^^^^^^^^
+ValueError: could not convert string to float: 'University of St Gallen'
+. Retrying
+2023-10-18 20:38:57 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 125 rows and 60 columns.
+This is the metadata of the dataframe dfs[0]:
+School Name,LinkedIn Followers,Instagram engagement %,Google Rating,Google Number of Reviews,Research Quality,Citations per Faculty,Average Experience of Faculty,Students per Staff,International board (%) 2022,Threeyear average 2022,Faculty with doctorates (%) 2022,Faculty with doctorates (%) 2021,Overall satisfaction 2022,Overall satisfaction 2021,Women on board (%) 2022,Female faculty (%) 2022,Salary percentage increase 2022,Salary percentage increase 2021,Weighted salary (US$) 2022,Weighted salary (US$) 2021,Value for money rank 2022,Value for money rank 2021,Employed at three months (%) 2022,International faculty (%) 2022,International students (%) 2022,Aims achieved (%) 2022,Internships (%),Average course length (months),Length of Programme(terms),Rank Change 2022-2021,Rank Change 2021-2020,Careers service rank 2022-2021,Careers service rank 2021-2020,International course experience rank 2022-2021,International course experience rank 2021-2020,International work mobility rank 2022-2021,International work mobility rank 2021-2020,Career progress rank 2022-2021,Career progress rank 2021-2020,Value for money rank 2022-2021,Value for money rank 2021-2020,Rank Stability,Careers service Rank Stability,International course experience Rank Stability,International work mobility Rank Stability,Career progress Rank Stability,Value for money Rank Stability,Faculty Change,International Board Change,Women on board Change,International faculty Change,International students Change,Female students (%) 2022 Change,Female faculty (%) 2022 Change,Women on board (%) 2022 Change,Satisfaction Change,International students (%) 2022 Change,International faculty (%) 2022 Change,International board (%) 2022 Change
+University of St Gallen,114985.0,0.68,4.5,217.0,81.4,22.8,10.0,12.9,53.0,1.0,100.0,100.0,9.76,9.82,33.0,24.0,62.25,59.63,138091.0,123999.0,15.0,15.0,97 (100),83.0,93.0,95.573,100,26.0,3.0,0.0,0.0,0.0,0.0,3.0,-1.0,0.0,-7.0,-14.0,-1.0,0.0,-1.0,0.037248404,0.0,0.320256308,0.629340559,0.141871103,0.037248404,0.0,0.0,-0.333333333,-1.0,2.333333333,-1.909090909,-1.909090909,-1.909090909,0.11,-3.636363636,-3.636363636,-3.636363636
+London Business School,536866.0,0.45,4.8,322.0,95.4,55.5,11.0,12.6,81.0,5.0,99.0,99.0,9.57,9.43,43.0,31.0,52.58,61.125,103489.0,100789.0,71.0,67.0,93 (99),85.0,96.0,91.002,30,10.0,3.0,3.0,0.0,0.0,2.0,0.0,0.0,-1.0,0.0,44.0,-26.0,4.0,2.0,0.056979883,0.260869565,0.138564065,0.329212078,0.455193902,0.056979883,0.0,-1.666666667,0.666666667,-0.333333333,0.0,1.111111111,1.111111111,1.111111111,-0.155,-1.818181818,-1.818181818,-1.818181818
+Essec Business School,190577.0,3.28,4.4,266.0,24.9,76.5,10.0,19.4,87.0,5.0,100.0,100.0,9.01,9.26,60.0,36.0,52.43,68.756,96988.0,99804.0,68.0,57.0,98 (95),71.0,64.0,88.716,100,18.0,4.0,0.0,3.0,9.0,1.0,-8.0,0.0,0.0,6.0,26.0,3.0,11.0,8.0,0.136570655,0.373174569,0.385627093,0.158031596,0.252924578,0.136570655,-0.333333333,-4.666666667,-5.0,-4.666666667,-2.666666667,1.333333333,1.333333333,1.333333333,0.18,0.818181818,0.818181818,0.818181818
+HEC Paris,289801.0,0.91,4.4,265.0,38.8,67.3,10.0,,83.0,2.0,96.0,96.0,9.09,9.21,42.0,30.0,76.62,80.648,118999.0,114357.0,44.0,41.0,99 (93),64.0,56.0,91.102,85,18.0,4.0,0.0,0.0,5.0,2.0,4.0,0.0,0.0,6.0,-9.0,9.0,3.0,5.0,0.093591025,0.245326691,0.175451303,0.487086093,0.177556571,0.093591025,1.333333333,0.0,0.0,1.666666667,-0.666666667,-0.272727273,-0.272727273,-0.272727273,0.145,2.454545455,2.454545455,2.454545455
+ESCP Business School,184493.0,1.77,4.2,104.0,,81.1,10.0,,95.0,6.0,100.0,100.0,8.82,8.72,68.0,39.0,52.11,57.454,95742.0,89003.0,78.0,78.0,99 (99),86.0,94.0,85.947,100,18.0,4.0,-2.0,1.0,-18.0,20.0,0.0,0.0,1.0,-6.0,21.0,-13.0,0.0,10.0,0.083517646,0.212778378,0.117647059,0.12906104,0.158792102,0.083517646,0.0,-16.66666667,-9.666666667,-2.0,-2.0,-1.0,-1.0,-1.0,-0.105,-4.454545455,-4.454545455,-4.454545455
+</dataframe>
+
+The user asked the following question:
+User 1: Give me the colums correlated to each other with correlation greater than 0.7?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Get the first dataframe from the list
+    df = dfs[0]
+    
+    # Calculate the correlation matrix
+    corr_matrix = df.corr()
+    
+    # Find the columns with correlation greater than 0.7
+    correlated_columns = []
+    for column in corr_matrix.columns:
+        correlated_columns.extend(corr_matrix[corr_matrix[column] > 0.7].index.tolist())
+    
+    # Remove duplicates and sort the columns
+    correlated_columns = sorted(list(set(correlated_columns)))
+    
+    # Return the result as a dataframe
+    result_df = pd.DataFrame(correlated_columns, columns=["Correlated Columns"])
+    
+    return {"type": "dataframe", "value": result_df}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 20, in analyze_data
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 10707, in corr
+    mat = data.to_numpy(dtype=float, na_value=np.nan, copy=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 1892, in to_numpy
+    result = self._mgr.as_array(dtype=dtype, copy=copy, na_value=na_value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1656, in as_array
+    arr = self._interleave(dtype=dtype, na_value=na_value)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1715, in _interleave
+    result[rl.indexer] = arr
+    ~~~~~~^^^^^^^^^^^^
+ValueError: could not convert string to float: 'University of St Gallen'
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-18 20:39:29 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    df = dfs[0]
+    numeric_columns = df.select_dtypes(include=[float]).columns
+    df[numeric_columns] = df[numeric_columns].apply(pd.to_numeric, errors='coerce')
+    corr_matrix = df.corr()
+    correlated_columns = []
+    for column in corr_matrix.columns:
+        correlated_columns.extend(corr_matrix[corr_matrix[column] > 0.7].index.tolist())
+    correlated_columns = sorted(list(set(correlated_columns)))
+    result_df = pd.DataFrame(correlated_columns, columns=['Correlated Columns'])
+    return {'type': 'dataframe', 'value': result_df}
+        ```
+2023-10-18 20:39:29 [WARNING] Error of executing code
+2023-10-18 20:39:29 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-10-18 20:39:29 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 22, in analyze_data
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 10707, in corr
+    mat = data.to_numpy(dtype=float, na_value=np.nan, copy=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 1892, in to_numpy
+    result = self._mgr.as_array(dtype=dtype, copy=copy, na_value=na_value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1656, in as_array
+    arr = self._interleave(dtype=dtype, na_value=na_value)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1715, in _interleave
+    result[rl.indexer] = arr
+    ~~~~~~^^^^^^^^^^^^
+ValueError: could not convert string to float: 'University of St Gallen'
+. Retrying
+2023-10-18 20:39:29 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 125 rows and 60 columns.
+This is the metadata of the dataframe dfs[0]:
+School Name,LinkedIn Followers,Instagram engagement %,Google Rating,Google Number of Reviews,Research Quality,Citations per Faculty,Average Experience of Faculty,Students per Staff,International board (%) 2022,Threeyear average 2022,Faculty with doctorates (%) 2022,Faculty with doctorates (%) 2021,Overall satisfaction 2022,Overall satisfaction 2021,Women on board (%) 2022,Female faculty (%) 2022,Salary percentage increase 2022,Salary percentage increase 2021,Weighted salary (US$) 2022,Weighted salary (US$) 2021,Value for money rank 2022,Value for money rank 2021,Employed at three months (%) 2022,International faculty (%) 2022,International students (%) 2022,Aims achieved (%) 2022,Internships (%),Average course length (months),Length of Programme(terms),Rank Change 2022-2021,Rank Change 2021-2020,Careers service rank 2022-2021,Careers service rank 2021-2020,International course experience rank 2022-2021,International course experience rank 2021-2020,International work mobility rank 2022-2021,International work mobility rank 2021-2020,Career progress rank 2022-2021,Career progress rank 2021-2020,Value for money rank 2022-2021,Value for money rank 2021-2020,Rank Stability,Careers service Rank Stability,International course experience Rank Stability,International work mobility Rank Stability,Career progress Rank Stability,Value for money Rank Stability,Faculty Change,International Board Change,Women on board Change,International faculty Change,International students Change,Female students (%) 2022 Change,Female faculty (%) 2022 Change,Women on board (%) 2022 Change,Satisfaction Change,International students (%) 2022 Change,International faculty (%) 2022 Change,International board (%) 2022 Change
+University of St Gallen,114985.0,0.68,4.5,217.0,81.4,22.8,10.0,12.9,53.0,1.0,100.0,100.0,9.76,9.82,33.0,24.0,62.25,59.63,138091.0,123999.0,15.0,15.0,97 (100),83.0,93.0,95.573,100,26.0,3.0,0.0,0.0,0.0,0.0,3.0,-1.0,0.0,-7.0,-14.0,-1.0,0.0,-1.0,0.037248404,0.0,0.320256308,0.629340559,0.141871103,0.037248404,0.0,0.0,-0.333333333,-1.0,2.333333333,-1.909090909,-1.909090909,-1.909090909,0.11,-3.636363636,-3.636363636,-3.636363636
+London Business School,536866.0,0.45,4.8,322.0,95.4,55.5,11.0,12.6,81.0,5.0,99.0,99.0,9.57,9.43,43.0,31.0,52.58,61.125,103489.0,100789.0,71.0,67.0,93 (99),85.0,96.0,91.002,30,10.0,3.0,3.0,0.0,0.0,2.0,0.0,0.0,-1.0,0.0,44.0,-26.0,4.0,2.0,0.056979883,0.260869565,0.138564065,0.329212078,0.455193902,0.056979883,0.0,-1.666666667,0.666666667,-0.333333333,0.0,1.111111111,1.111111111,1.111111111,-0.155,-1.818181818,-1.818181818,-1.818181818
+Essec Business School,190577.0,3.28,4.4,266.0,24.9,76.5,10.0,19.4,87.0,5.0,100.0,100.0,9.01,9.26,60.0,36.0,52.43,68.756,96988.0,99804.0,68.0,57.0,98 (95),71.0,64.0,88.716,100,18.0,4.0,0.0,3.0,9.0,1.0,-8.0,0.0,0.0,6.0,26.0,3.0,11.0,8.0,0.136570655,0.373174569,0.385627093,0.158031596,0.252924578,0.136570655,-0.333333333,-4.666666667,-5.0,-4.666666667,-2.666666667,1.333333333,1.333333333,1.333333333,0.18,0.818181818,0.818181818,0.818181818
+HEC Paris,289801.0,0.91,4.4,265.0,38.8,67.3,10.0,,83.0,2.0,96.0,96.0,9.09,9.21,42.0,30.0,76.62,80.648,118999.0,114357.0,44.0,41.0,99 (93),64.0,56.0,91.102,85,18.0,4.0,0.0,0.0,5.0,2.0,4.0,0.0,0.0,6.0,-9.0,9.0,3.0,5.0,0.093591025,0.245326691,0.175451303,0.487086093,0.177556571,0.093591025,1.333333333,0.0,0.0,1.666666667,-0.666666667,-0.272727273,-0.272727273,-0.272727273,0.145,2.454545455,2.454545455,2.454545455
+ESCP Business School,184493.0,1.77,4.2,104.0,,81.1,10.0,,95.0,6.0,100.0,100.0,8.82,8.72,68.0,39.0,52.11,57.454,95742.0,89003.0,78.0,78.0,99 (99),86.0,94.0,85.947,100,18.0,4.0,-2.0,1.0,-18.0,20.0,0.0,0.0,1.0,-6.0,21.0,-13.0,0.0,10.0,0.083517646,0.212778378,0.117647059,0.12906104,0.158792102,0.083517646,0.0,-16.66666667,-9.666666667,-2.0,-2.0,-1.0,-1.0,-1.0,-0.105,-4.454545455,-4.454545455,-4.454545455
+</dataframe>
+
+The user asked the following question:
+User 1: Give me the colums correlated to each other with correlation greater than 0.7?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Get the first dataframe from the list
+    df = dfs[0]
+    
+    # Calculate the correlation matrix
+    corr_matrix = df.corr()
+    
+    # Find the columns with correlation greater than 0.7
+    correlated_columns = []
+    for column in corr_matrix.columns:
+        correlated_columns.extend(corr_matrix[corr_matrix[column] > 0.7].index.tolist())
+    
+    # Remove duplicates and sort the columns
+    correlated_columns = sorted(list(set(correlated_columns)))
+    
+    # Return the result as a dataframe
+    result_df = pd.DataFrame(correlated_columns, columns=["Correlated Columns"])
+    
+    return {"type": "dataframe", "value": result_df}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 22, in analyze_data
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 10707, in corr
+    mat = data.to_numpy(dtype=float, na_value=np.nan, copy=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 1892, in to_numpy
+    result = self._mgr.as_array(dtype=dtype, copy=copy, na_value=na_value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1656, in as_array
+    arr = self._interleave(dtype=dtype, na_value=na_value)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1715, in _interleave
+    result[rl.indexer] = arr
+    ~~~~~~^^^^^^^^^^^^
+ValueError: could not convert string to float: 'University of St Gallen'
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-18 20:39:59 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    df = dfs[0]
+    df = df.apply(pd.to_numeric, errors='coerce')
+    corr_matrix = df.corr()
+    correlated_columns = []
+    for column in corr_matrix.columns:
+        correlated_columns.extend(corr_matrix[corr_matrix[column] > 0.7].index.tolist())
+    correlated_columns = sorted(list(set(correlated_columns)))
+    result_df = pd.DataFrame(correlated_columns, columns=['Correlated Columns'])
+    return {'type': 'dataframe', 'value': result_df}
+        ```
+2023-10-18 20:39:59 [INFO] Answer: {'type': 'dataframe', 'value':                                 Correlated Columns
+0                           Aims achieved (%) 2022
+1                    Average Experience of Faculty
+2                   Average course length (months)
+3                   Career progress Rank Stability
+4                   Career progress rank 2021-2020
+5                   Career progress rank 2022-2021
+6                   Careers service Rank Stability
+7                   Careers service rank 2021-2020
+8                   Careers service rank 2022-2021
+9                            Citations per Faculty
+10                                  Faculty Change
+11                Faculty with doctorates (%) 2021
+12                Faculty with doctorates (%) 2022
+13                         Female faculty (%) 2022
+14                  Female faculty (%) 2022 Change
+15                 Female students (%) 2022 Change
+16                        Google Number of Reviews
+17                                   Google Rating
+18                          Instagram engagement %
+19                      International Board Change
+20                    International board (%) 2022
+21             International board (%) 2022 Change
+22  International course experience Rank Stability
+23  International course experience rank 2021-2020
+24  International course experience rank 2022-2021
+25                  International faculty (%) 2022
+26           International faculty (%) 2022 Change
+27                    International faculty Change
+28                 International students (%) 2022
+29          International students (%) 2022 Change
+30                   International students Change
+31      International work mobility Rank Stability
+32      International work mobility rank 2021-2020
+33      International work mobility rank 2022-2021
+34                                 Internships (%)
+35                      Length of Programme(terms)
+36                              LinkedIn Followers
+37                       Overall satisfaction 2021
+38                       Overall satisfaction 2022
+39                           Rank Change 2021-2020
+40                           Rank Change 2022-2021
+41                                  Rank Stability
+42                                Research Quality
+43                 Salary percentage increase 2021
+44                 Salary percentage increase 2022
+45                             Satisfaction Change
+46                              Students per Staff
+47                          Threeyear average 2022
+48                  Value for money Rank Stability
+49                       Value for money rank 2021
+50                  Value for money rank 2021-2020
+51                       Value for money rank 2022
+52                  Value for money rank 2022-2021
+53                      Weighted salary (US$) 2021
+54                      Weighted salary (US$) 2022
+55                         Women on board (%) 2022
+56                  Women on board (%) 2022 Change
+57                           Women on board Change}
+2023-10-18 20:39:59 [INFO] Executed in: 90.43868851661682s
+2023-10-18 20:41:49 [INFO] Question: Give me the colums correlated to each other with correlation greater than 0.7, please give with which column they are corelated and what is the correlation coefficient?
+2023-10-18 20:41:49 [INFO] Running PandasAI with openai LLM...
+2023-10-18 20:41:49 [INFO] Prompt ID: 31549be4-8f88-4478-bf87-ef38df99124e
+2023-10-18 20:41:49 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 125 rows and 60 columns.
+This is the metadata of the dataframe dfs[0]:
+School Name,LinkedIn Followers,Instagram engagement %,Google Rating,Google Number of Reviews,Research Quality,Citations per Faculty,Average Experience of Faculty,Students per Staff,International board (%) 2022,Threeyear average 2022,Faculty with doctorates (%) 2022,Faculty with doctorates (%) 2021,Overall satisfaction 2022,Overall satisfaction 2021,Women on board (%) 2022,Female faculty (%) 2022,Salary percentage increase 2022,Salary percentage increase 2021,Weighted salary (US$) 2022,Weighted salary (US$) 2021,Value for money rank 2022,Value for money rank 2021,Employed at three months (%) 2022,International faculty (%) 2022,International students (%) 2022,Aims achieved (%) 2022,Internships (%),Average course length (months),Length of Programme(terms),Rank Change 2022-2021,Rank Change 2021-2020,Careers service rank 2022-2021,Careers service rank 2021-2020,International course experience rank 2022-2021,International course experience rank 2021-2020,International work mobility rank 2022-2021,International work mobility rank 2021-2020,Career progress rank 2022-2021,Career progress rank 2021-2020,Value for money rank 2022-2021,Value for money rank 2021-2020,Rank Stability,Careers service Rank Stability,International course experience Rank Stability,International work mobility Rank Stability,Career progress Rank Stability,Value for money Rank Stability,Faculty Change,International Board Change,Women on board Change,International faculty Change,International students Change,Female students (%) 2022 Change,Female faculty (%) 2022 Change,Women on board (%) 2022 Change,Satisfaction Change,International students (%) 2022 Change,International faculty (%) 2022 Change,International board (%) 2022 Change
+University of St Gallen,114985.0,0.68,4.5,217.0,81.4,22.8,10.0,12.9,53.0,1.0,100.0,100.0,9.76,9.82,33.0,24.0,62.25,59.63,138091.0,123999.0,15.0,15.0,97 (100),83.0,93.0,95.573,100,26.0,3.0,0.0,0.0,0.0,0.0,3.0,-1.0,0.0,-7.0,-14.0,-1.0,0.0,-1.0,0.037248404,0.0,0.320256308,0.629340559,0.141871103,0.037248404,0.0,0.0,-0.333333333,-1.0,2.333333333,-1.909090909,-1.909090909,-1.909090909,0.11,-3.636363636,-3.636363636,-3.636363636
+London Business School,536866.0,0.45,4.8,322.0,95.4,55.5,11.0,12.6,81.0,5.0,99.0,99.0,9.57,9.43,43.0,31.0,52.58,61.125,103489.0,100789.0,71.0,67.0,93 (99),85.0,96.0,91.002,30,10.0,3.0,3.0,0.0,0.0,2.0,0.0,0.0,-1.0,0.0,44.0,-26.0,4.0,2.0,0.056979883,0.260869565,0.138564065,0.329212078,0.455193902,0.056979883,0.0,-1.666666667,0.666666667,-0.333333333,0.0,1.111111111,1.111111111,1.111111111,-0.155,-1.818181818,-1.818181818,-1.818181818
+Essec Business School,190577.0,3.28,4.4,266.0,24.9,76.5,10.0,19.4,87.0,5.0,100.0,100.0,9.01,9.26,60.0,36.0,52.43,68.756,96988.0,99804.0,68.0,57.0,98 (95),71.0,64.0,88.716,100,18.0,4.0,0.0,3.0,9.0,1.0,-8.0,0.0,0.0,6.0,26.0,3.0,11.0,8.0,0.136570655,0.373174569,0.385627093,0.158031596,0.252924578,0.136570655,-0.333333333,-4.666666667,-5.0,-4.666666667,-2.666666667,1.333333333,1.333333333,1.333333333,0.18,0.818181818,0.818181818,0.818181818
+HEC Paris,289801.0,0.91,4.4,265.0,38.8,67.3,10.0,,83.0,2.0,96.0,96.0,9.09,9.21,42.0,30.0,76.62,80.648,118999.0,114357.0,44.0,41.0,99 (93),64.0,56.0,91.102,85,18.0,4.0,0.0,0.0,5.0,2.0,4.0,0.0,0.0,6.0,-9.0,9.0,3.0,5.0,0.093591025,0.245326691,0.175451303,0.487086093,0.177556571,0.093591025,1.333333333,0.0,0.0,1.666666667,-0.666666667,-0.272727273,-0.272727273,-0.272727273,0.145,2.454545455,2.454545455,2.454545455
+ESCP Business School,184493.0,1.77,4.2,104.0,,81.1,10.0,,95.0,6.0,100.0,100.0,8.82,8.72,68.0,39.0,52.11,57.454,95742.0,89003.0,78.0,78.0,99 (99),86.0,94.0,85.947,100,18.0,4.0,-2.0,1.0,-18.0,20.0,0.0,0.0,1.0,-6.0,21.0,-13.0,0.0,10.0,0.083517646,0.212778378,0.117647059,0.12906104,0.158792102,0.083517646,0.0,-16.66666667,-9.666666667,-2.0,-2.0,-1.0,-1.0,-1.0,-0.105,-4.454545455,-4.454545455,-4.454545455
+</dataframe>
+
+<conversation>
+User 1: Give me the colums correlated to each other with correlation greater than 0.7, please give with which column they are corelated and what is the correlation coefficient?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-18 20:42:21 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Get the first dataframe from the list
+    df = dfs[0]
+    
+    # Calculate the correlation matrix
+    corr_matrix = df.corr()
+    
+    # Find the columns with correlation greater than 0.7
+    correlated_columns = []
+    for column in corr_matrix.columns:
+        correlated_columns.extend([(column, col, corr_matrix.loc[column, col]) for col in corr_matrix.columns if abs(corr_matrix.loc[column, col]) > 0.7 and column != col])
+    
+    # Create a dataframe to store the results
+    result_df = pd.DataFrame(correlated_columns, columns=['Column 1', 'Column 2', 'Correlation Coefficient'])
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": result_df}
+```
+
+2023-10-18 20:42:21 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    df = dfs[0]
+    corr_matrix = df.corr()
+    correlated_columns = []
+    for column in corr_matrix.columns:
+        correlated_columns.extend([(column, col, corr_matrix.loc[column, col]) for col in corr_matrix.columns if abs(corr_matrix.loc[column, col]) > 0.7 and column != col])
+    result_df = pd.DataFrame(correlated_columns, columns=['Column 1', 'Column 2', 'Correlation Coefficient'])
+    return {'type': 'dataframe', 'value': result_df}
+        ```
+2023-10-18 20:42:21 [WARNING] Error of executing code
+2023-10-18 20:42:21 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-10-18 20:42:21 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 20, in analyze_data
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 10707, in corr
+    mat = data.to_numpy(dtype=float, na_value=np.nan, copy=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 1892, in to_numpy
+    result = self._mgr.as_array(dtype=dtype, copy=copy, na_value=na_value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1656, in as_array
+    arr = self._interleave(dtype=dtype, na_value=na_value)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1715, in _interleave
+    result[rl.indexer] = arr
+    ~~~~~~^^^^^^^^^^^^
+ValueError: could not convert string to float: 'University of St Gallen'
+. Retrying
+2023-10-18 20:42:21 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 125 rows and 60 columns.
+This is the metadata of the dataframe dfs[0]:
+School Name,LinkedIn Followers,Instagram engagement %,Google Rating,Google Number of Reviews,Research Quality,Citations per Faculty,Average Experience of Faculty,Students per Staff,International board (%) 2022,Threeyear average 2022,Faculty with doctorates (%) 2022,Faculty with doctorates (%) 2021,Overall satisfaction 2022,Overall satisfaction 2021,Women on board (%) 2022,Female faculty (%) 2022,Salary percentage increase 2022,Salary percentage increase 2021,Weighted salary (US$) 2022,Weighted salary (US$) 2021,Value for money rank 2022,Value for money rank 2021,Employed at three months (%) 2022,International faculty (%) 2022,International students (%) 2022,Aims achieved (%) 2022,Internships (%),Average course length (months),Length of Programme(terms),Rank Change 2022-2021,Rank Change 2021-2020,Careers service rank 2022-2021,Careers service rank 2021-2020,International course experience rank 2022-2021,International course experience rank 2021-2020,International work mobility rank 2022-2021,International work mobility rank 2021-2020,Career progress rank 2022-2021,Career progress rank 2021-2020,Value for money rank 2022-2021,Value for money rank 2021-2020,Rank Stability,Careers service Rank Stability,International course experience Rank Stability,International work mobility Rank Stability,Career progress Rank Stability,Value for money Rank Stability,Faculty Change,International Board Change,Women on board Change,International faculty Change,International students Change,Female students (%) 2022 Change,Female faculty (%) 2022 Change,Women on board (%) 2022 Change,Satisfaction Change,International students (%) 2022 Change,International faculty (%) 2022 Change,International board (%) 2022 Change
+University of St Gallen,114985.0,0.68,4.5,217.0,81.4,22.8,10.0,12.9,53.0,1.0,100.0,100.0,9.76,9.82,33.0,24.0,62.25,59.63,138091.0,123999.0,15.0,15.0,97 (100),83.0,93.0,95.573,100,26.0,3.0,0.0,0.0,0.0,0.0,3.0,-1.0,0.0,-7.0,-14.0,-1.0,0.0,-1.0,0.037248404,0.0,0.320256308,0.629340559,0.141871103,0.037248404,0.0,0.0,-0.333333333,-1.0,2.333333333,-1.909090909,-1.909090909,-1.909090909,0.11,-3.636363636,-3.636363636,-3.636363636
+London Business School,536866.0,0.45,4.8,322.0,95.4,55.5,11.0,12.6,81.0,5.0,99.0,99.0,9.57,9.43,43.0,31.0,52.58,61.125,103489.0,100789.0,71.0,67.0,93 (99),85.0,96.0,91.002,30,10.0,3.0,3.0,0.0,0.0,2.0,0.0,0.0,-1.0,0.0,44.0,-26.0,4.0,2.0,0.056979883,0.260869565,0.138564065,0.329212078,0.455193902,0.056979883,0.0,-1.666666667,0.666666667,-0.333333333,0.0,1.111111111,1.111111111,1.111111111,-0.155,-1.818181818,-1.818181818,-1.818181818
+Essec Business School,190577.0,3.28,4.4,266.0,24.9,76.5,10.0,19.4,87.0,5.0,100.0,100.0,9.01,9.26,60.0,36.0,52.43,68.756,96988.0,99804.0,68.0,57.0,98 (95),71.0,64.0,88.716,100,18.0,4.0,0.0,3.0,9.0,1.0,-8.0,0.0,0.0,6.0,26.0,3.0,11.0,8.0,0.136570655,0.373174569,0.385627093,0.158031596,0.252924578,0.136570655,-0.333333333,-4.666666667,-5.0,-4.666666667,-2.666666667,1.333333333,1.333333333,1.333333333,0.18,0.818181818,0.818181818,0.818181818
+HEC Paris,289801.0,0.91,4.4,265.0,38.8,67.3,10.0,,83.0,2.0,96.0,96.0,9.09,9.21,42.0,30.0,76.62,80.648,118999.0,114357.0,44.0,41.0,99 (93),64.0,56.0,91.102,85,18.0,4.0,0.0,0.0,5.0,2.0,4.0,0.0,0.0,6.0,-9.0,9.0,3.0,5.0,0.093591025,0.245326691,0.175451303,0.487086093,0.177556571,0.093591025,1.333333333,0.0,0.0,1.666666667,-0.666666667,-0.272727273,-0.272727273,-0.272727273,0.145,2.454545455,2.454545455,2.454545455
+ESCP Business School,184493.0,1.77,4.2,104.0,,81.1,10.0,,95.0,6.0,100.0,100.0,8.82,8.72,68.0,39.0,52.11,57.454,95742.0,89003.0,78.0,78.0,99 (99),86.0,94.0,85.947,100,18.0,4.0,-2.0,1.0,-18.0,20.0,0.0,0.0,1.0,-6.0,21.0,-13.0,0.0,10.0,0.083517646,0.212778378,0.117647059,0.12906104,0.158792102,0.083517646,0.0,-16.66666667,-9.666666667,-2.0,-2.0,-1.0,-1.0,-1.0,-0.105,-4.454545455,-4.454545455,-4.454545455
+</dataframe>
+
+The user asked the following question:
+User 1: Give me the colums correlated to each other with correlation greater than 0.7, please give with which column they are corelated and what is the correlation coefficient?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Get the first dataframe from the list
+    df = dfs[0]
+    
+    # Calculate the correlation matrix
+    corr_matrix = df.corr()
+    
+    # Find the columns with correlation greater than 0.7
+    correlated_columns = []
+    for column in corr_matrix.columns:
+        correlated_columns.extend([(column, col, corr_matrix.loc[column, col]) for col in corr_matrix.columns if abs(corr_matrix.loc[column, col]) > 0.7 and column != col])
+    
+    # Create a dataframe to store the results
+    result_df = pd.DataFrame(correlated_columns, columns=['Column 1', 'Column 2', 'Correlation Coefficient'])
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": result_df}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 20, in analyze_data
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 10707, in corr
+    mat = data.to_numpy(dtype=float, na_value=np.nan, copy=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 1892, in to_numpy
+    result = self._mgr.as_array(dtype=dtype, copy=copy, na_value=na_value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1656, in as_array
+    arr = self._interleave(dtype=dtype, na_value=na_value)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1715, in _interleave
+    result[rl.indexer] = arr
+    ~~~~~~^^^^^^^^^^^^
+ValueError: could not convert string to float: 'University of St Gallen'
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-18 20:42:56 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    df = dfs[0]
+    numeric_columns = df.select_dtypes(include=['float64']).columns
+    df[numeric_columns] = df[numeric_columns].apply(pd.to_numeric, errors='coerce')
+    corr_matrix = df.corr()
+    correlated_columns = []
+    for column in corr_matrix.columns:
+        correlated_columns.extend([(column, col, corr_matrix.loc[column, col]) for col in corr_matrix.columns if abs(corr_matrix.loc[column, col]) > 0.7 and column != col])
+    result_df = pd.DataFrame(correlated_columns, columns=['Column 1', 'Column 2', 'Correlation Coefficient'])
+    return {'type': 'dataframe', 'value': result_df}
+        ```
+2023-10-18 20:42:56 [WARNING] Error of executing code
+2023-10-18 20:42:56 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-10-18 20:42:56 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 22, in analyze_data
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 10707, in corr
+    mat = data.to_numpy(dtype=float, na_value=np.nan, copy=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 1892, in to_numpy
+    result = self._mgr.as_array(dtype=dtype, copy=copy, na_value=na_value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1656, in as_array
+    arr = self._interleave(dtype=dtype, na_value=na_value)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1715, in _interleave
+    result[rl.indexer] = arr
+    ~~~~~~^^^^^^^^^^^^
+ValueError: could not convert string to float: 'University of St Gallen'
+. Retrying
+2023-10-18 20:42:56 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 125 rows and 60 columns.
+This is the metadata of the dataframe dfs[0]:
+School Name,LinkedIn Followers,Instagram engagement %,Google Rating,Google Number of Reviews,Research Quality,Citations per Faculty,Average Experience of Faculty,Students per Staff,International board (%) 2022,Threeyear average 2022,Faculty with doctorates (%) 2022,Faculty with doctorates (%) 2021,Overall satisfaction 2022,Overall satisfaction 2021,Women on board (%) 2022,Female faculty (%) 2022,Salary percentage increase 2022,Salary percentage increase 2021,Weighted salary (US$) 2022,Weighted salary (US$) 2021,Value for money rank 2022,Value for money rank 2021,Employed at three months (%) 2022,International faculty (%) 2022,International students (%) 2022,Aims achieved (%) 2022,Internships (%),Average course length (months),Length of Programme(terms),Rank Change 2022-2021,Rank Change 2021-2020,Careers service rank 2022-2021,Careers service rank 2021-2020,International course experience rank 2022-2021,International course experience rank 2021-2020,International work mobility rank 2022-2021,International work mobility rank 2021-2020,Career progress rank 2022-2021,Career progress rank 2021-2020,Value for money rank 2022-2021,Value for money rank 2021-2020,Rank Stability,Careers service Rank Stability,International course experience Rank Stability,International work mobility Rank Stability,Career progress Rank Stability,Value for money Rank Stability,Faculty Change,International Board Change,Women on board Change,International faculty Change,International students Change,Female students (%) 2022 Change,Female faculty (%) 2022 Change,Women on board (%) 2022 Change,Satisfaction Change,International students (%) 2022 Change,International faculty (%) 2022 Change,International board (%) 2022 Change
+University of St Gallen,114985.0,0.68,4.5,217.0,81.4,22.8,10.0,12.9,53.0,1.0,100.0,100.0,9.76,9.82,33.0,24.0,62.25,59.63,138091.0,123999.0,15.0,15.0,97 (100),83.0,93.0,95.573,100,26.0,3.0,0.0,0.0,0.0,0.0,3.0,-1.0,0.0,-7.0,-14.0,-1.0,0.0,-1.0,0.037248404,0.0,0.320256308,0.629340559,0.141871103,0.037248404,0.0,0.0,-0.333333333,-1.0,2.333333333,-1.909090909,-1.909090909,-1.909090909,0.11,-3.636363636,-3.636363636,-3.636363636
+London Business School,536866.0,0.45,4.8,322.0,95.4,55.5,11.0,12.6,81.0,5.0,99.0,99.0,9.57,9.43,43.0,31.0,52.58,61.125,103489.0,100789.0,71.0,67.0,93 (99),85.0,96.0,91.002,30,10.0,3.0,3.0,0.0,0.0,2.0,0.0,0.0,-1.0,0.0,44.0,-26.0,4.0,2.0,0.056979883,0.260869565,0.138564065,0.329212078,0.455193902,0.056979883,0.0,-1.666666667,0.666666667,-0.333333333,0.0,1.111111111,1.111111111,1.111111111,-0.155,-1.818181818,-1.818181818,-1.818181818
+Essec Business School,190577.0,3.28,4.4,266.0,24.9,76.5,10.0,19.4,87.0,5.0,100.0,100.0,9.01,9.26,60.0,36.0,52.43,68.756,96988.0,99804.0,68.0,57.0,98 (95),71.0,64.0,88.716,100,18.0,4.0,0.0,3.0,9.0,1.0,-8.0,0.0,0.0,6.0,26.0,3.0,11.0,8.0,0.136570655,0.373174569,0.385627093,0.158031596,0.252924578,0.136570655,-0.333333333,-4.666666667,-5.0,-4.666666667,-2.666666667,1.333333333,1.333333333,1.333333333,0.18,0.818181818,0.818181818,0.818181818
+HEC Paris,289801.0,0.91,4.4,265.0,38.8,67.3,10.0,,83.0,2.0,96.0,96.0,9.09,9.21,42.0,30.0,76.62,80.648,118999.0,114357.0,44.0,41.0,99 (93),64.0,56.0,91.102,85,18.0,4.0,0.0,0.0,5.0,2.0,4.0,0.0,0.0,6.0,-9.0,9.0,3.0,5.0,0.093591025,0.245326691,0.175451303,0.487086093,0.177556571,0.093591025,1.333333333,0.0,0.0,1.666666667,-0.666666667,-0.272727273,-0.272727273,-0.272727273,0.145,2.454545455,2.454545455,2.454545455
+ESCP Business School,184493.0,1.77,4.2,104.0,,81.1,10.0,,95.0,6.0,100.0,100.0,8.82,8.72,68.0,39.0,52.11,57.454,95742.0,89003.0,78.0,78.0,99 (99),86.0,94.0,85.947,100,18.0,4.0,-2.0,1.0,-18.0,20.0,0.0,0.0,1.0,-6.0,21.0,-13.0,0.0,10.0,0.083517646,0.212778378,0.117647059,0.12906104,0.158792102,0.083517646,0.0,-16.66666667,-9.666666667,-2.0,-2.0,-1.0,-1.0,-1.0,-0.105,-4.454545455,-4.454545455,-4.454545455
+</dataframe>
+
+The user asked the following question:
+User 1: Give me the colums correlated to each other with correlation greater than 0.7, please give with which column they are corelated and what is the correlation coefficient?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Get the first dataframe from the list
+    df = dfs[0]
+    
+    # Calculate the correlation matrix
+    corr_matrix = df.corr()
+    
+    # Find the columns with correlation greater than 0.7
+    correlated_columns = []
+    for column in corr_matrix.columns:
+        correlated_columns.extend([(column, col, corr_matrix.loc[column, col]) for col in corr_matrix.columns if abs(corr_matrix.loc[column, col]) > 0.7 and column != col])
+    
+    # Create a dataframe to store the results
+    result_df = pd.DataFrame(correlated_columns, columns=['Column 1', 'Column 2', 'Correlation Coefficient'])
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": result_df}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 22, in analyze_data
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 10707, in corr
+    mat = data.to_numpy(dtype=float, na_value=np.nan, copy=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\frame.py", line 1892, in to_numpy
+    result = self._mgr.as_array(dtype=dtype, copy=copy, na_value=na_value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1656, in as_array
+    arr = self._interleave(dtype=dtype, na_value=na_value)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\internals\managers.py", line 1715, in _interleave
+    result[rl.indexer] = arr
+    ~~~~~~^^^^^^^^^^^^
+ValueError: could not convert string to float: 'University of St Gallen'
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-18 20:43:31 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    df = dfs[0]
+    numeric_columns = df.select_dtypes(include=['float64']).columns
+    df[numeric_columns] = df[numeric_columns].apply(pd.to_numeric, errors='coerce')
+    corr_matrix = df.corr()
+    correlated_columns = []
+    for column in corr_matrix.columns:
+        correlated_columns.extend([(column, col, corr_matrix.loc[column, col]) for col in corr_matrix.columns if abs(corr_matrix.loc[column, col]) > 0.7 and column != col])
+    result_df = pd.DataFrame(correlated_columns, columns=['Column 1', 'Column 2', 'Correlation Coefficient'])
+    return {'type': 'dataframe', 'value': result_df}
+        ```
+2023-10-18 20:43:31 [WARNING] Error of executing code
+2023-10-18 20:43:56 [INFO] Question: Give me the  numerical columns correlated to each other with correlation greater than 0.7, please give with which column they are corelated and what is the correlation coefficient?
+2023-10-18 20:43:56 [INFO] Running PandasAI with openai LLM...
+2023-10-18 20:43:56 [INFO] Prompt ID: 6734205b-dba2-4199-854b-ab4128eee282
+2023-10-18 20:43:56 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 125 rows and 60 columns.
+This is the metadata of the dataframe dfs[0]:
+School Name,LinkedIn Followers,Instagram engagement %,Google Rating,Google Number of Reviews,Research Quality,Citations per Faculty,Average Experience of Faculty,Students per Staff,International board (%) 2022,Threeyear average 2022,Faculty with doctorates (%) 2022,Faculty with doctorates (%) 2021,Overall satisfaction 2022,Overall satisfaction 2021,Women on board (%) 2022,Female faculty (%) 2022,Salary percentage increase 2022,Salary percentage increase 2021,Weighted salary (US$) 2022,Weighted salary (US$) 2021,Value for money rank 2022,Value for money rank 2021,Employed at three months (%) 2022,International faculty (%) 2022,International students (%) 2022,Aims achieved (%) 2022,Internships (%),Average course length (months),Length of Programme(terms),Rank Change 2022-2021,Rank Change 2021-2020,Careers service rank 2022-2021,Careers service rank 2021-2020,International course experience rank 2022-2021,International course experience rank 2021-2020,International work mobility rank 2022-2021,International work mobility rank 2021-2020,Career progress rank 2022-2021,Career progress rank 2021-2020,Value for money rank 2022-2021,Value for money rank 2021-2020,Rank Stability,Careers service Rank Stability,International course experience Rank Stability,International work mobility Rank Stability,Career progress Rank Stability,Value for money Rank Stability,Faculty Change,International Board Change,Women on board Change,International faculty Change,International students Change,Female students (%) 2022 Change,Female faculty (%) 2022 Change,Women on board (%) 2022 Change,Satisfaction Change,International students (%) 2022 Change,International faculty (%) 2022 Change,International board (%) 2022 Change
+University of St Gallen,114985.0,0.68,4.5,217.0,81.4,22.8,10.0,12.9,53.0,1.0,100.0,100.0,9.76,9.82,33.0,24.0,62.25,59.63,138091.0,123999.0,15.0,15.0,97 (100),83.0,93.0,95.573,100,26.0,3.0,0.0,0.0,0.0,0.0,3.0,-1.0,0.0,-7.0,-14.0,-1.0,0.0,-1.0,0.037248404,0.0,0.320256308,0.629340559,0.141871103,0.037248404,0.0,0.0,-0.333333333,-1.0,2.333333333,-1.909090909,-1.909090909,-1.909090909,0.11,-3.636363636,-3.636363636,-3.636363636
+London Business School,536866.0,0.45,4.8,322.0,95.4,55.5,11.0,12.6,81.0,5.0,99.0,99.0,9.57,9.43,43.0,31.0,52.58,61.125,103489.0,100789.0,71.0,67.0,93 (99),85.0,96.0,91.002,30,10.0,3.0,3.0,0.0,0.0,2.0,0.0,0.0,-1.0,0.0,44.0,-26.0,4.0,2.0,0.056979883,0.260869565,0.138564065,0.329212078,0.455193902,0.056979883,0.0,-1.666666667,0.666666667,-0.333333333,0.0,1.111111111,1.111111111,1.111111111,-0.155,-1.818181818,-1.818181818,-1.818181818
+Essec Business School,190577.0,3.28,4.4,266.0,24.9,76.5,10.0,19.4,87.0,5.0,100.0,100.0,9.01,9.26,60.0,36.0,52.43,68.756,96988.0,99804.0,68.0,57.0,98 (95),71.0,64.0,88.716,100,18.0,4.0,0.0,3.0,9.0,1.0,-8.0,0.0,0.0,6.0,26.0,3.0,11.0,8.0,0.136570655,0.373174569,0.385627093,0.158031596,0.252924578,0.136570655,-0.333333333,-4.666666667,-5.0,-4.666666667,-2.666666667,1.333333333,1.333333333,1.333333333,0.18,0.818181818,0.818181818,0.818181818
+HEC Paris,289801.0,0.91,4.4,265.0,38.8,67.3,10.0,,83.0,2.0,96.0,96.0,9.09,9.21,42.0,30.0,76.62,80.648,118999.0,114357.0,44.0,41.0,99 (93),64.0,56.0,91.102,85,18.0,4.0,0.0,0.0,5.0,2.0,4.0,0.0,0.0,6.0,-9.0,9.0,3.0,5.0,0.093591025,0.245326691,0.175451303,0.487086093,0.177556571,0.093591025,1.333333333,0.0,0.0,1.666666667,-0.666666667,-0.272727273,-0.272727273,-0.272727273,0.145,2.454545455,2.454545455,2.454545455
+ESCP Business School,184493.0,1.77,4.2,104.0,,81.1,10.0,,95.0,6.0,100.0,100.0,8.82,8.72,68.0,39.0,52.11,57.454,95742.0,89003.0,78.0,78.0,99 (99),86.0,94.0,85.947,100,18.0,4.0,-2.0,1.0,-18.0,20.0,0.0,0.0,1.0,-6.0,21.0,-13.0,0.0,10.0,0.083517646,0.212778378,0.117647059,0.12906104,0.158792102,0.083517646,0.0,-16.66666667,-9.666666667,-2.0,-2.0,-1.0,-1.0,-1.0,-0.105,-4.454545455,-4.454545455,-4.454545455
+</dataframe>
+
+<conversation>
+User 1: Give me the  numerical columns correlated to each other with correlation greater than 0.7, please give with which column they are corelated and what is the correlation coefficient?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-18 20:44:29 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Extract the first dataframe from the list
+    df = dfs[0]
+    
+    # Get the numerical columns
+    numerical_columns = df.select_dtypes(include=['float64', 'int64']).columns
+    
+    # Create an empty dictionary to store the correlated columns
+    correlated_columns = {}
+    
+    # Iterate over the numerical columns
+    for column in numerical_columns:
+        # Find the correlation coefficients with other columns
+        correlations = df[numerical_columns].corr()[column]
+        
+        # Filter the correlations greater than 0.7
+        filtered_correlations = correlations[correlations > 0.7]
+        
+        # Exclude the correlation with itself
+        filtered_correlations = filtered_correlations.drop(column)
+        
+        # Check if there are any correlated columns
+        if not filtered_correlations.empty:
+            # Store the correlated columns and their correlation coefficients
+            correlated_columns[column] = filtered_correlations
+    
+    return {"type": "dataframe", "value": pd.DataFrame(correlated_columns)}
+```
+
+2023-10-18 20:44:29 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    df = dfs[0]
+    numerical_columns = df.select_dtypes(include=['float64', 'int64']).columns
+    correlated_columns = {}
+    for column in numerical_columns:
+        correlations = df[numerical_columns].corr()[column]
+        filtered_correlations = correlations[correlations > 0.7]
+        filtered_correlations = filtered_correlations.drop(column)
+        if not filtered_correlations.empty:
+            correlated_columns[column] = filtered_correlations
+    return {'type': 'dataframe', 'value': pd.DataFrame(correlated_columns)}
+        ```
+2023-10-18 20:44:30 [INFO] Answer: {'type': 'dataframe', 'value':                                         Faculty with doctorates (%) 2021  \
+Faculty with doctorates (%) 2021                                     NaN   
+Female faculty (%) 2022 Change                                       NaN   
+Female students (%) 2022 Change                                      NaN   
+International board (%) 2022 Change                                  NaN   
+International faculty (%) 2022 Change                                NaN   
+International students (%) 2022 Change                               NaN   
+Overall satisfaction 2021                                       0.972924   
+Rank Stability                                                       NaN   
+Salary percentage increase 2021                                 0.762019   
+Value for money Rank Stability                                       NaN   
+Value for money rank 2021                                            NaN   
+Value for money rank 2022                                            NaN   
+Weighted salary (US$) 2021                                      0.849027   
+Women on board (%) 2022 Change                                       NaN   
+
+                                        Overall satisfaction 2021  \
+Faculty with doctorates (%) 2021                         0.972924   
+Female faculty (%) 2022 Change                                NaN   
+Female students (%) 2022 Change                               NaN   
+International board (%) 2022 Change                           NaN   
+International faculty (%) 2022 Change                         NaN   
+International students (%) 2022 Change                        NaN   
+Overall satisfaction 2021                                     NaN   
+Rank Stability                                                NaN   
+Salary percentage increase 2021                          0.785524   
+Value for money Rank Stability                                NaN   
+Value for money rank 2021                                     NaN   
+Value for money rank 2022                                     NaN   
+Weighted salary (US$) 2021                               0.867479   
+Women on board (%) 2022 Change                                NaN   
+
+                                        Salary percentage increase 2021  \
+Faculty with doctorates (%) 2021                               0.762019   
+Female faculty (%) 2022 Change                                      NaN   
+Female students (%) 2022 Change                                     NaN   
+International board (%) 2022 Change                                 NaN   
+International faculty (%) 2022 Change                               NaN   
+International students (%) 2022 Change                              NaN   
+Overall satisfaction 2021                                      0.785524   
+Rank Stability                                                      NaN   
+Salary percentage increase 2021                                     NaN   
+Value for money Rank Stability                                      NaN   
+Value for money rank 2021                                           NaN   
+Value for money rank 2022                                           NaN   
+Weighted salary (US$) 2021                                          NaN   
+Women on board (%) 2022 Change                                      NaN   
+
+                                        Weighted salary (US$) 2021  \
+Faculty with doctorates (%) 2021                          0.849027   
+Female faculty (%) 2022 Change                                 NaN   
+Female students (%) 2022 Change                                NaN   
+International board (%) 2022 Change                            NaN   
+International faculty (%) 2022 Change                          NaN   
+International students (%) 2022 Change                         NaN   
+Overall satisfaction 2021                                 0.867479   
+Rank Stability                                                 NaN   
+Salary percentage increase 2021                                NaN   
+Value for money Rank Stability                                 NaN   
+Value for money rank 2021                                      NaN   
+Value for money rank 2022                                      NaN   
+Weighted salary (US$) 2021                                     NaN   
+Women on board (%) 2022 Change                                 NaN   
+
+                                        Value for money rank 2022  \
+Faculty with doctorates (%) 2021                              NaN   
+Female faculty (%) 2022 Change                                NaN   
+Female students (%) 2022 Change                               NaN   
+International board (%) 2022 Change                           NaN   
+International faculty (%) 2022 Change                         NaN   
+International students (%) 2022 Change                        NaN   
+Overall satisfaction 2021                                     NaN   
+Rank Stability                                                NaN   
+Salary percentage increase 2021                               NaN   
+Value for money Rank Stability                                NaN   
+Value for money rank 2021                                0.715225   
+Value for money rank 2022                                     NaN   
+Weighted salary (US$) 2021                                    NaN   
+Women on board (%) 2022 Change                                NaN   
+
+                                        Value for money rank 2021  \
+Faculty with doctorates (%) 2021                              NaN   
+Female faculty (%) 2022 Change                                NaN   
+Female students (%) 2022 Change                               NaN   
+International board (%) 2022 Change                           NaN   
+International faculty (%) 2022 Change                         NaN   
+International students (%) 2022 Change                        NaN   
+Overall satisfaction 2021                                     NaN   
+Rank Stability                                                NaN   
+Salary percentage increase 2021                               NaN   
+Value for money Rank Stability                                NaN   
+Value for money rank 2021                                     NaN   
+Value for money rank 2022                                0.715225   
+Weighted salary (US$) 2021                                    NaN   
+Women on board (%) 2022 Change                                NaN   
+
+                                        Rank Stability  \
+Faculty with doctorates (%) 2021                   NaN   
+Female faculty (%) 2022 Change                     NaN   
+Female students (%) 2022 Change                    NaN   
+International board (%) 2022 Change                NaN   
+International faculty (%) 2022 Change              NaN   
+International students (%) 2022 Change             NaN   
+Overall satisfaction 2021                          NaN   
+Rank Stability                                     NaN   
+Salary percentage increase 2021                    NaN   
+Value for money Rank Stability                     1.0   
+Value for money rank 2021                          NaN   
+Value for money rank 2022                          NaN   
+Weighted salary (US$) 2021                         NaN   
+Women on board (%) 2022 Change                     NaN   
+
+                                        Value for money Rank Stability  \
+Faculty with doctorates (%) 2021                                   NaN   
+Female faculty (%) 2022 Change                                     NaN   
+Female students (%) 2022 Change                                    NaN   
+International board (%) 2022 Change                                NaN   
+International faculty (%) 2022 Change                              NaN   
+International students (%) 2022 Change                             NaN   
+Overall satisfaction 2021                                          NaN   
+Rank Stability                                                     1.0   
+Salary percentage increase 2021                                    NaN   
+Value for money Rank Stability                                     NaN   
+Value for money rank 2021                                          NaN   
+Value for money rank 2022                                          NaN   
+Weighted salary (US$) 2021                                         NaN   
+Women on board (%) 2022 Change                                     NaN   
+
+                                        Female students (%) 2022 Change  \
+Faculty with doctorates (%) 2021                                    NaN   
+Female faculty (%) 2022 Change                                      1.0   
+Female students (%) 2022 Change                                     NaN   
+International board (%) 2022 Change                                 NaN   
+International faculty (%) 2022 Change                               NaN   
+International students (%) 2022 Change                              NaN   
+Overall satisfaction 2021                                           NaN   
+Rank Stability                                                      NaN   
+Salary percentage increase 2021                                     NaN   
+Value for money Rank Stability                                      NaN   
+Value for money rank 2021                                           NaN   
+Value for money rank 2022                                           NaN   
+Weighted salary (US$) 2021                                          NaN   
+Women on board (%) 2022 Change                                      1.0   
+
+                                        Female faculty (%) 2022 Change  \
+Faculty with doctorates (%) 2021                                   NaN   
+Female faculty (%) 2022 Change                                     NaN   
+Female students (%) 2022 Change                                    1.0   
+International board (%) 2022 Change                                NaN   
+International faculty (%) 2022 Change                              NaN   
+International students (%) 2022 Change                             NaN   
+Overall satisfaction 2021                                          NaN   
+Rank Stability                                                     NaN   
+Salary percentage increase 2021                                    NaN   
+Value for money Rank Stability                                     NaN   
+Value for money rank 2021                                          NaN   
+Value for money rank 2022                                          NaN   
+Weighted salary (US$) 2021                                         NaN   
+Women on board (%) 2022 Change                                     1.0   
+
+                                        Women on board (%) 2022 Change  \
+Faculty with doctorates (%) 2021                                   NaN   
+Female faculty (%) 2022 Change                                     1.0   
+Female students (%) 2022 Change                                    1.0   
+International board (%) 2022 Change                                NaN   
+International faculty (%) 2022 Change                              NaN   
+International students (%) 2022 Change                             NaN   
+Overall satisfaction 2021                                          NaN   
+Rank Stability                                                     NaN   
+Salary percentage increase 2021                                    NaN   
+Value for money Rank Stability                                     NaN   
+Value for money rank 2021                                          NaN   
+Value for money rank 2022                                          NaN   
+Weighted salary (US$) 2021                                         NaN   
+Women on board (%) 2022 Change                                     NaN   
+
+                                        International students (%) 2022 Change  \
+Faculty with doctorates (%) 2021                                           NaN   
+Female faculty (%) 2022 Change                                             NaN   
+Female students (%) 2022 Change                                            NaN   
+International board (%) 2022 Change                                        1.0   
+International faculty (%) 2022 Change                                      1.0   
+International students (%) 2022 Change                                     NaN   
+Overall satisfaction 2021                                                  NaN   
+Rank Stability                                                             NaN   
+Salary percentage increase 2021                                            NaN   
+Value for money Rank Stability                                             NaN   
+Value for money rank 2021                                                  NaN   
+Value for money rank 2022                                                  NaN   
+Weighted salary (US$) 2021                                                 NaN   
+Women on board (%) 2022 Change                                             NaN   
+
+                                        International faculty (%) 2022 Change  \
+Faculty with doctorates (%) 2021                                          NaN   
+Female faculty (%) 2022 Change                                            NaN   
+Female students (%) 2022 Change                                           NaN   
+International board (%) 2022 Change                                       1.0   
+International faculty (%) 2022 Change                                     NaN   
+International students (%) 2022 Change                                    1.0   
+Overall satisfaction 2021                                                 NaN   
+Rank Stability                                                            NaN   
+Salary percentage increase 2021                                           NaN   
+Value for money Rank Stability                                            NaN   
+Value for money rank 2021                                                 NaN   
+Value for money rank 2022                                                 NaN   
+Weighted salary (US$) 2021                                                NaN   
+Women on board (%) 2022 Change                                            NaN   
+
+                                        International board (%) 2022 Change  
+Faculty with doctorates (%) 2021                                        NaN  
+Female faculty (%) 2022 Change                                          NaN  
+Female students (%) 2022 Change                                         NaN  
+International board (%) 2022 Change                                     NaN  
+International faculty (%) 2022 Change                                   1.0  
+International students (%) 2022 Change                                  1.0  
+Overall satisfaction 2021                                               NaN  
+Rank Stability                                                          NaN  
+Salary percentage increase 2021                                         NaN  
+Value for money Rank Stability                                          NaN  
+Value for money rank 2021                                               NaN  
+Value for money rank 2022                                               NaN  
+Weighted salary (US$) 2021                                              NaN  
+Women on board (%) 2022 Change                                          NaN  }
+2023-10-18 20:44:30 [INFO] Executed in: 33.65940546989441s
+2023-10-18 20:47:35 [INFO] Question: What are the ML models you will suggest to make a predictive model to predict the rank or change in rank using the data
+2023-10-18 20:47:35 [INFO] Running PandasAI with openai LLM...
+2023-10-18 20:47:35 [INFO] Prompt ID: 2ba13262-effb-492a-9c7e-f61f06454b08
+2023-10-18 20:47:35 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 125 rows and 60 columns.
+This is the metadata of the dataframe dfs[0]:
+School Name,LinkedIn Followers,Instagram engagement %,Google Rating,Google Number of Reviews,Research Quality,Citations per Faculty,Average Experience of Faculty,Students per Staff,International board (%) 2022,Threeyear average 2022,Faculty with doctorates (%) 2022,Faculty with doctorates (%) 2021,Overall satisfaction 2022,Overall satisfaction 2021,Women on board (%) 2022,Female faculty (%) 2022,Salary percentage increase 2022,Salary percentage increase 2021,Weighted salary (US$) 2022,Weighted salary (US$) 2021,Value for money rank 2022,Value for money rank 2021,Employed at three months (%) 2022,International faculty (%) 2022,International students (%) 2022,Aims achieved (%) 2022,Internships (%),Average course length (months),Length of Programme(terms),Rank Change 2022-2021,Rank Change 2021-2020,Careers service rank 2022-2021,Careers service rank 2021-2020,International course experience rank 2022-2021,International course experience rank 2021-2020,International work mobility rank 2022-2021,International work mobility rank 2021-2020,Career progress rank 2022-2021,Career progress rank 2021-2020,Value for money rank 2022-2021,Value for money rank 2021-2020,Rank Stability,Careers service Rank Stability,International course experience Rank Stability,International work mobility Rank Stability,Career progress Rank Stability,Value for money Rank Stability,Faculty Change,International Board Change,Women on board Change,International faculty Change,International students Change,Female students (%) 2022 Change,Female faculty (%) 2022 Change,Women on board (%) 2022 Change,Satisfaction Change,International students (%) 2022 Change,International faculty (%) 2022 Change,International board (%) 2022 Change
+University of St Gallen,114985.0,0.68,4.5,217.0,81.4,22.8,10.0,12.9,53.0,1.0,100.0,100.0,9.76,9.82,33.0,24.0,62.25,59.63,138091.0,123999.0,15.0,15.0,97 (100),83.0,93.0,95.573,100,26.0,3.0,0.0,0.0,0.0,0.0,3.0,-1.0,0.0,-7.0,-14.0,-1.0,0.0,-1.0,0.037248404,0.0,0.320256308,0.629340559,0.141871103,0.037248404,0.0,0.0,-0.333333333,-1.0,2.333333333,-1.909090909,-1.909090909,-1.909090909,0.11,-3.636363636,-3.636363636,-3.636363636
+London Business School,536866.0,0.45,4.8,322.0,95.4,55.5,11.0,12.6,81.0,5.0,99.0,99.0,9.57,9.43,43.0,31.0,52.58,61.125,103489.0,100789.0,71.0,67.0,93 (99),85.0,96.0,91.002,30,10.0,3.0,3.0,0.0,0.0,2.0,0.0,0.0,-1.0,0.0,44.0,-26.0,4.0,2.0,0.056979883,0.260869565,0.138564065,0.329212078,0.455193902,0.056979883,0.0,-1.666666667,0.666666667,-0.333333333,0.0,1.111111111,1.111111111,1.111111111,-0.155,-1.818181818,-1.818181818,-1.818181818
+Essec Business School,190577.0,3.28,4.4,266.0,24.9,76.5,10.0,19.4,87.0,5.0,100.0,100.0,9.01,9.26,60.0,36.0,52.43,68.756,96988.0,99804.0,68.0,57.0,98 (95),71.0,64.0,88.716,100,18.0,4.0,0.0,3.0,9.0,1.0,-8.0,0.0,0.0,6.0,26.0,3.0,11.0,8.0,0.136570655,0.373174569,0.385627093,0.158031596,0.252924578,0.136570655,-0.333333333,-4.666666667,-5.0,-4.666666667,-2.666666667,1.333333333,1.333333333,1.333333333,0.18,0.818181818,0.818181818,0.818181818
+HEC Paris,289801.0,0.91,4.4,265.0,38.8,67.3,10.0,,83.0,2.0,96.0,96.0,9.09,9.21,42.0,30.0,76.62,80.648,118999.0,114357.0,44.0,41.0,99 (93),64.0,56.0,91.102,85,18.0,4.0,0.0,0.0,5.0,2.0,4.0,0.0,0.0,6.0,-9.0,9.0,3.0,5.0,0.093591025,0.245326691,0.175451303,0.487086093,0.177556571,0.093591025,1.333333333,0.0,0.0,1.666666667,-0.666666667,-0.272727273,-0.272727273,-0.272727273,0.145,2.454545455,2.454545455,2.454545455
+ESCP Business School,184493.0,1.77,4.2,104.0,,81.1,10.0,,95.0,6.0,100.0,100.0,8.82,8.72,68.0,39.0,52.11,57.454,95742.0,89003.0,78.0,78.0,99 (99),86.0,94.0,85.947,100,18.0,4.0,-2.0,1.0,-18.0,20.0,0.0,0.0,1.0,-6.0,21.0,-13.0,0.0,10.0,0.083517646,0.212778378,0.117647059,0.12906104,0.158792102,0.083517646,0.0,-16.66666667,-9.666666667,-2.0,-2.0,-1.0,-1.0,-1.0,-0.105,-4.454545455,-4.454545455,-4.454545455
+</dataframe>
+
+<conversation>
+User 1: What are the ML models you will suggest to make a predictive model to predict the rank or change in rank using the data
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-18 20:48:18 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df = dfs[0].copy()
+    df.dropna(subset=['Rank Change 2022-2021'], inplace=True)  # Remove rows with missing rank change data
+    df['Rank Change 2022-2021'] = df['Rank Change 2022-2021'].astype(int)  # Convert rank change to integer
+    
+    # Process: Manipulating data for analysis
+    X = df.drop(['Rank Change 2022-2021'], axis=1)  # Features
+    y = df['Rank Change 2022-2021']  # Target variable
+    
+    # Split the data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    # Analyze: Conducting the actual analysis
+    models = {
+        'Linear Regression': LinearRegression(),
+        'Decision Tree': DecisionTreeRegressor(),
+        'Random Forest': RandomForestRegressor()
+    }
+    
+    results = {}
+    
+    for model_name, model in models.items():
+        model.fit(X_train, y_train)  # Train the model
+        score = model.score(X_test, y_test)  # Evaluate the model
+        
+        results[model_name] = score
+    
+    return {
+        "type": "dataframe",
+        "value": pd.DataFrame.from_dict(results, orient='index', columns=['Score'])
+    }
+```
+
+2023-10-18 20:48:18 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    df = dfs[0].copy()
+    df.dropna(subset=['Rank Change 2022-2021'], inplace=True)
+    df['Rank Change 2022-2021'] = df['Rank Change 2022-2021'].astype(int)
+    X = df.drop(['Rank Change 2022-2021'], axis=1)
+    y = df['Rank Change 2022-2021']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    models = {'Linear Regression': LinearRegression(), 'Decision Tree': DecisionTreeRegressor(), 'Random Forest': RandomForestRegressor()}
+    results = {}
+    for model_name, model in models.items():
+        model.fit(X_train, y_train)
+        score = model.score(X_test, y_test)
+        results[model_name] = score
+    return {'type': 'dataframe', 'value': pd.DataFrame.from_dict(results, orient='index', columns=['Score'])}
+        ```
+2023-10-18 20:48:21 [WARNING] Error of executing code
+2023-10-18 20:48:21 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-10-18 20:48:21 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 28, in analyze_data
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\base.py", line 1151, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\linear_model\_base.py", line 678, in fit
+    X, y = self._validate_data(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\base.py", line 621, in _validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\utils\validation.py", line 1147, in check_X_y
+    X = check_array(
+        ^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\utils\validation.py", line 917, in check_array
+    array = _asarray_with_order(array, order=order, dtype=dtype, xp=xp)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\utils\_array_api.py", line 380, in _asarray_with_order
+    array = numpy.asarray(array, order=order, dtype=dtype)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\generic.py", line 2084, in __array__
+    arr = np.asarray(values, dtype=dtype)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string to float: 'University of Cologne'
+. Retrying
+2023-10-18 20:48:21 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 125 rows and 60 columns.
+This is the metadata of the dataframe dfs[0]:
+School Name,LinkedIn Followers,Instagram engagement %,Google Rating,Google Number of Reviews,Research Quality,Citations per Faculty,Average Experience of Faculty,Students per Staff,International board (%) 2022,Threeyear average 2022,Faculty with doctorates (%) 2022,Faculty with doctorates (%) 2021,Overall satisfaction 2022,Overall satisfaction 2021,Women on board (%) 2022,Female faculty (%) 2022,Salary percentage increase 2022,Salary percentage increase 2021,Weighted salary (US$) 2022,Weighted salary (US$) 2021,Value for money rank 2022,Value for money rank 2021,Employed at three months (%) 2022,International faculty (%) 2022,International students (%) 2022,Aims achieved (%) 2022,Internships (%),Average course length (months),Length of Programme(terms),Rank Change 2022-2021,Rank Change 2021-2020,Careers service rank 2022-2021,Careers service rank 2021-2020,International course experience rank 2022-2021,International course experience rank 2021-2020,International work mobility rank 2022-2021,International work mobility rank 2021-2020,Career progress rank 2022-2021,Career progress rank 2021-2020,Value for money rank 2022-2021,Value for money rank 2021-2020,Rank Stability,Careers service Rank Stability,International course experience Rank Stability,International work mobility Rank Stability,Career progress Rank Stability,Value for money Rank Stability,Faculty Change,International Board Change,Women on board Change,International faculty Change,International students Change,Female students (%) 2022 Change,Female faculty (%) 2022 Change,Women on board (%) 2022 Change,Satisfaction Change,International students (%) 2022 Change,International faculty (%) 2022 Change,International board (%) 2022 Change
+University of St Gallen,114985.0,0.68,4.5,217.0,81.4,22.8,10.0,12.9,53.0,1.0,100.0,100.0,9.76,9.82,33.0,24.0,62.25,59.63,138091.0,123999.0,15.0,15.0,97 (100),83.0,93.0,95.573,100,26.0,3.0,0.0,0.0,0.0,0.0,3.0,-1.0,0.0,-7.0,-14.0,-1.0,0.0,-1.0,0.037248404,0.0,0.320256308,0.629340559,0.141871103,0.037248404,0.0,0.0,-0.333333333,-1.0,2.333333333,-1.909090909,-1.909090909,-1.909090909,0.11,-3.636363636,-3.636363636,-3.636363636
+London Business School,536866.0,0.45,4.8,322.0,95.4,55.5,11.0,12.6,81.0,5.0,99.0,99.0,9.57,9.43,43.0,31.0,52.58,61.125,103489.0,100789.0,71.0,67.0,93 (99),85.0,96.0,91.002,30,10.0,3.0,3.0,0.0,0.0,2.0,0.0,0.0,-1.0,0.0,44.0,-26.0,4.0,2.0,0.056979883,0.260869565,0.138564065,0.329212078,0.455193902,0.056979883,0.0,-1.666666667,0.666666667,-0.333333333,0.0,1.111111111,1.111111111,1.111111111,-0.155,-1.818181818,-1.818181818,-1.818181818
+Essec Business School,190577.0,3.28,4.4,266.0,24.9,76.5,10.0,19.4,87.0,5.0,100.0,100.0,9.01,9.26,60.0,36.0,52.43,68.756,96988.0,99804.0,68.0,57.0,98 (95),71.0,64.0,88.716,100,18.0,4.0,0.0,3.0,9.0,1.0,-8.0,0.0,0.0,6.0,26.0,3.0,11.0,8.0,0.136570655,0.373174569,0.385627093,0.158031596,0.252924578,0.136570655,-0.333333333,-4.666666667,-5.0,-4.666666667,-2.666666667,1.333333333,1.333333333,1.333333333,0.18,0.818181818,0.818181818,0.818181818
+HEC Paris,289801.0,0.91,4.4,265.0,38.8,67.3,10.0,,83.0,2.0,96.0,96.0,9.09,9.21,42.0,30.0,76.62,80.648,118999.0,114357.0,44.0,41.0,99 (93),64.0,56.0,91.102,85,18.0,4.0,0.0,0.0,5.0,2.0,4.0,0.0,0.0,6.0,-9.0,9.0,3.0,5.0,0.093591025,0.245326691,0.175451303,0.487086093,0.177556571,0.093591025,1.333333333,0.0,0.0,1.666666667,-0.666666667,-0.272727273,-0.272727273,-0.272727273,0.145,2.454545455,2.454545455,2.454545455
+ESCP Business School,184493.0,1.77,4.2,104.0,,81.1,10.0,,95.0,6.0,100.0,100.0,8.82,8.72,68.0,39.0,52.11,57.454,95742.0,89003.0,78.0,78.0,99 (99),86.0,94.0,85.947,100,18.0,4.0,-2.0,1.0,-18.0,20.0,0.0,0.0,1.0,-6.0,21.0,-13.0,0.0,10.0,0.083517646,0.212778378,0.117647059,0.12906104,0.158792102,0.083517646,0.0,-16.66666667,-9.666666667,-2.0,-2.0,-1.0,-1.0,-1.0,-0.105,-4.454545455,-4.454545455,-4.454545455
+</dataframe>
+
+The user asked the following question:
+User 1: What are the ML models you will suggest to make a predictive model to predict the rank or change in rank using the data
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df = dfs[0].copy()
+    df.dropna(subset=['Rank Change 2022-2021'], inplace=True)  # Remove rows with missing rank change data
+    df['Rank Change 2022-2021'] = df['Rank Change 2022-2021'].astype(int)  # Convert rank change to integer
+    
+    # Process: Manipulating data for analysis
+    X = df.drop(['Rank Change 2022-2021'], axis=1)  # Features
+    y = df['Rank Change 2022-2021']  # Target variable
+    
+    # Split the data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    # Analyze: Conducting the actual analysis
+    models = {
+        'Linear Regression': LinearRegression(),
+        'Decision Tree': DecisionTreeRegressor(),
+        'Random Forest': RandomForestRegressor()
+    }
+    
+    results = {}
+    
+    for model_name, model in models.items():
+        model.fit(X_train, y_train)  # Train the model
+        score = model.score(X_test, y_test)  # Evaluate the model
+        
+        results[model_name] = score
+    
+    return {
+        "type": "dataframe",
+        "value": pd.DataFrame.from_dict(results, orient='index', columns=['Score'])
+    }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 28, in analyze_data
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\base.py", line 1151, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\linear_model\_base.py", line 678, in fit
+    X, y = self._validate_data(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\base.py", line 621, in _validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\utils\validation.py", line 1147, in check_X_y
+    X = check_array(
+        ^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\utils\validation.py", line 917, in check_array
+    array = _asarray_with_order(array, order=order, dtype=dtype, xp=xp)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\utils\_array_api.py", line 380, in _asarray_with_order
+    array = numpy.asarray(array, order=order, dtype=dtype)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandas\core\generic.py", line 2084, in __array__
+    arr = np.asarray(values, dtype=dtype)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string to float: 'University of Cologne'
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-18 20:49:04 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    df = dfs[0].copy()
+    df.dropna(subset=['Rank Change 2022-2021'], inplace=True)
+    df['Rank Change 2022-2021'] = df['Rank Change 2022-2021'].astype(int)
+    X = df.drop(['Rank Change 2022-2021'], axis=1)
+    y = df['Rank Change 2022-2021']
+    X = pd.get_dummies(X)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    models = {'Linear Regression': LinearRegression(), 'Decision Tree': DecisionTreeRegressor(), 'Random Forest': RandomForestRegressor()}
+    results = {}
+    for model_name, model in models.items():
+        model.fit(X_train, y_train)
+        score = model.score(X_test, y_test)
+        results[model_name] = score
+    return {'type': 'dataframe', 'value': pd.DataFrame.from_dict(results, orient='index', columns=['Score'])}
+        ```
+2023-10-18 20:49:04 [WARNING] Error of executing code
+2023-10-18 20:49:04 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-10-18 20:49:04 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 29, in analyze_data
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\base.py", line 1151, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\linear_model\_base.py", line 678, in fit
+    X, y = self._validate_data(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\base.py", line 621, in _validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\utils\validation.py", line 1147, in check_X_y
+    X = check_array(
+        ^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\utils\validation.py", line 959, in check_array
+    _assert_all_finite(
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\utils\validation.py", line 124, in _assert_all_finite
+    _assert_all_finite_element_wise(
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\utils\validation.py", line 173, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains NaN.
+LinearRegression does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+. Retrying
+2023-10-18 20:49:04 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 125 rows and 60 columns.
+This is the metadata of the dataframe dfs[0]:
+School Name,LinkedIn Followers,Instagram engagement %,Google Rating,Google Number of Reviews,Research Quality,Citations per Faculty,Average Experience of Faculty,Students per Staff,International board (%) 2022,Threeyear average 2022,Faculty with doctorates (%) 2022,Faculty with doctorates (%) 2021,Overall satisfaction 2022,Overall satisfaction 2021,Women on board (%) 2022,Female faculty (%) 2022,Salary percentage increase 2022,Salary percentage increase 2021,Weighted salary (US$) 2022,Weighted salary (US$) 2021,Value for money rank 2022,Value for money rank 2021,Employed at three months (%) 2022,International faculty (%) 2022,International students (%) 2022,Aims achieved (%) 2022,Internships (%),Average course length (months),Length of Programme(terms),Rank Change 2022-2021,Rank Change 2021-2020,Careers service rank 2022-2021,Careers service rank 2021-2020,International course experience rank 2022-2021,International course experience rank 2021-2020,International work mobility rank 2022-2021,International work mobility rank 2021-2020,Career progress rank 2022-2021,Career progress rank 2021-2020,Value for money rank 2022-2021,Value for money rank 2021-2020,Rank Stability,Careers service Rank Stability,International course experience Rank Stability,International work mobility Rank Stability,Career progress Rank Stability,Value for money Rank Stability,Faculty Change,International Board Change,Women on board Change,International faculty Change,International students Change,Female students (%) 2022 Change,Female faculty (%) 2022 Change,Women on board (%) 2022 Change,Satisfaction Change,International students (%) 2022 Change,International faculty (%) 2022 Change,International board (%) 2022 Change
+University of St Gallen,114985.0,0.68,4.5,217.0,81.4,22.8,10.0,12.9,53.0,1.0,100.0,100.0,9.76,9.82,33.0,24.0,62.25,59.63,138091.0,123999.0,15.0,15.0,97 (100),83.0,93.0,95.573,100,26.0,3.0,0.0,0.0,0.0,0.0,3.0,-1.0,0.0,-7.0,-14.0,-1.0,0.0,-1.0,0.037248404,0.0,0.320256308,0.629340559,0.141871103,0.037248404,0.0,0.0,-0.333333333,-1.0,2.333333333,-1.909090909,-1.909090909,-1.909090909,0.11,-3.636363636,-3.636363636,-3.636363636
+London Business School,536866.0,0.45,4.8,322.0,95.4,55.5,11.0,12.6,81.0,5.0,99.0,99.0,9.57,9.43,43.0,31.0,52.58,61.125,103489.0,100789.0,71.0,67.0,93 (99),85.0,96.0,91.002,30,10.0,3.0,3.0,0.0,0.0,2.0,0.0,0.0,-1.0,0.0,44.0,-26.0,4.0,2.0,0.056979883,0.260869565,0.138564065,0.329212078,0.455193902,0.056979883,0.0,-1.666666667,0.666666667,-0.333333333,0.0,1.111111111,1.111111111,1.111111111,-0.155,-1.818181818,-1.818181818,-1.818181818
+Essec Business School,190577.0,3.28,4.4,266.0,24.9,76.5,10.0,19.4,87.0,5.0,100.0,100.0,9.01,9.26,60.0,36.0,52.43,68.756,96988.0,99804.0,68.0,57.0,98 (95),71.0,64.0,88.716,100,18.0,4.0,0.0,3.0,9.0,1.0,-8.0,0.0,0.0,6.0,26.0,3.0,11.0,8.0,0.136570655,0.373174569,0.385627093,0.158031596,0.252924578,0.136570655,-0.333333333,-4.666666667,-5.0,-4.666666667,-2.666666667,1.333333333,1.333333333,1.333333333,0.18,0.818181818,0.818181818,0.818181818
+HEC Paris,289801.0,0.91,4.4,265.0,38.8,67.3,10.0,,83.0,2.0,96.0,96.0,9.09,9.21,42.0,30.0,76.62,80.648,118999.0,114357.0,44.0,41.0,99 (93),64.0,56.0,91.102,85,18.0,4.0,0.0,0.0,5.0,2.0,4.0,0.0,0.0,6.0,-9.0,9.0,3.0,5.0,0.093591025,0.245326691,0.175451303,0.487086093,0.177556571,0.093591025,1.333333333,0.0,0.0,1.666666667,-0.666666667,-0.272727273,-0.272727273,-0.272727273,0.145,2.454545455,2.454545455,2.454545455
+ESCP Business School,184493.0,1.77,4.2,104.0,,81.1,10.0,,95.0,6.0,100.0,100.0,8.82,8.72,68.0,39.0,52.11,57.454,95742.0,89003.0,78.0,78.0,99 (99),86.0,94.0,85.947,100,18.0,4.0,-2.0,1.0,-18.0,20.0,0.0,0.0,1.0,-6.0,21.0,-13.0,0.0,10.0,0.083517646,0.212778378,0.117647059,0.12906104,0.158792102,0.083517646,0.0,-16.66666667,-9.666666667,-2.0,-2.0,-1.0,-1.0,-1.0,-0.105,-4.454545455,-4.454545455,-4.454545455
+</dataframe>
+
+The user asked the following question:
+User 1: What are the ML models you will suggest to make a predictive model to predict the rank or change in rank using the data
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df = dfs[0].copy()
+    df.dropna(subset=['Rank Change 2022-2021'], inplace=True)  # Remove rows with missing rank change data
+    df['Rank Change 2022-2021'] = df['Rank Change 2022-2021'].astype(int)  # Convert rank change to integer
+    
+    # Process: Manipulating data for analysis
+    X = df.drop(['Rank Change 2022-2021'], axis=1)  # Features
+    y = df['Rank Change 2022-2021']  # Target variable
+    
+    # Split the data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    # Analyze: Conducting the actual analysis
+    models = {
+        'Linear Regression': LinearRegression(),
+        'Decision Tree': DecisionTreeRegressor(),
+        'Random Forest': RandomForestRegressor()
+    }
+    
+    results = {}
+    
+    for model_name, model in models.items():
+        model.fit(X_train, y_train)  # Train the model
+        score = model.score(X_test, y_test)  # Evaluate the model
+        
+        results[model_name] = score
+    
+    return {
+        "type": "dataframe",
+        "value": pd.DataFrame.from_dict(results, orient='index', columns=['Score'])
+    }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 29, in analyze_data
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\base.py", line 1151, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\linear_model\_base.py", line 678, in fit
+    X, y = self._validate_data(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\base.py", line 621, in _validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\utils\validation.py", line 1147, in check_X_y
+    X = check_array(
+        ^^^^^^^^^^^^
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\utils\validation.py", line 959, in check_array
+    _assert_all_finite(
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\utils\validation.py", line 124, in _assert_all_finite
+    _assert_all_finite_element_wise(
+  File "C:\Users\gupta\anaconda3\Lib\site-packages\sklearn\utils\validation.py", line 173, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains NaN.
+LinearRegression does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-18 20:49:05 [INFO] error_code=context_length_exceeded error_message="This model's maximum context length is 4097 tokens. However, you requested 4120 tokens (3120 in the messages, 1000 in the completion). Please reduce the length of the messages or completion." error_param=messages error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-10-18 20:49:40 [INFO] Question: What are the ML models you will suggest to make a predictive model to predict the rank using the data
+2023-10-18 20:49:40 [INFO] Running PandasAI with openai LLM...
+2023-10-18 20:49:40 [INFO] Prompt ID: 25e773b9-8601-4194-9b19-a0b948da33c7
+2023-10-18 20:49:40 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 125 rows and 60 columns.
+This is the metadata of the dataframe dfs[0]:
+School Name,LinkedIn Followers,Instagram engagement %,Google Rating,Google Number of Reviews,Research Quality,Citations per Faculty,Average Experience of Faculty,Students per Staff,International board (%) 2022,Threeyear average 2022,Faculty with doctorates (%) 2022,Faculty with doctorates (%) 2021,Overall satisfaction 2022,Overall satisfaction 2021,Women on board (%) 2022,Female faculty (%) 2022,Salary percentage increase 2022,Salary percentage increase 2021,Weighted salary (US$) 2022,Weighted salary (US$) 2021,Value for money rank 2022,Value for money rank 2021,Employed at three months (%) 2022,International faculty (%) 2022,International students (%) 2022,Aims achieved (%) 2022,Internships (%),Average course length (months),Length of Programme(terms),Rank Change 2022-2021,Rank Change 2021-2020,Careers service rank 2022-2021,Careers service rank 2021-2020,International course experience rank 2022-2021,International course experience rank 2021-2020,International work mobility rank 2022-2021,International work mobility rank 2021-2020,Career progress rank 2022-2021,Career progress rank 2021-2020,Value for money rank 2022-2021,Value for money rank 2021-2020,Rank Stability,Careers service Rank Stability,International course experience Rank Stability,International work mobility Rank Stability,Career progress Rank Stability,Value for money Rank Stability,Faculty Change,International Board Change,Women on board Change,International faculty Change,International students Change,Female students (%) 2022 Change,Female faculty (%) 2022 Change,Women on board (%) 2022 Change,Satisfaction Change,International students (%) 2022 Change,International faculty (%) 2022 Change,International board (%) 2022 Change
+University of St Gallen,114985.0,0.68,4.5,217.0,81.4,22.8,10.0,12.9,53.0,1.0,100.0,100.0,9.76,9.82,33.0,24.0,62.25,59.63,138091.0,123999.0,15.0,15.0,97 (100),83.0,93.0,95.573,100,26.0,3.0,0.0,0.0,0.0,0.0,3.0,-1.0,0.0,-7.0,-14.0,-1.0,0.0,-1.0,0.037248404,0.0,0.320256308,0.629340559,0.141871103,0.037248404,0.0,0.0,-0.333333333,-1.0,2.333333333,-1.909090909,-1.909090909,-1.909090909,0.11,-3.636363636,-3.636363636,-3.636363636
+London Business School,536866.0,0.45,4.8,322.0,95.4,55.5,11.0,12.6,81.0,5.0,99.0,99.0,9.57,9.43,43.0,31.0,52.58,61.125,103489.0,100789.0,71.0,67.0,93 (99),85.0,96.0,91.002,30,10.0,3.0,3.0,0.0,0.0,2.0,0.0,0.0,-1.0,0.0,44.0,-26.0,4.0,2.0,0.056979883,0.260869565,0.138564065,0.329212078,0.455193902,0.056979883,0.0,-1.666666667,0.666666667,-0.333333333,0.0,1.111111111,1.111111111,1.111111111,-0.155,-1.818181818,-1.818181818,-1.818181818
+Essec Business School,190577.0,3.28,4.4,266.0,24.9,76.5,10.0,19.4,87.0,5.0,100.0,100.0,9.01,9.26,60.0,36.0,52.43,68.756,96988.0,99804.0,68.0,57.0,98 (95),71.0,64.0,88.716,100,18.0,4.0,0.0,3.0,9.0,1.0,-8.0,0.0,0.0,6.0,26.0,3.0,11.0,8.0,0.136570655,0.373174569,0.385627093,0.158031596,0.252924578,0.136570655,-0.333333333,-4.666666667,-5.0,-4.666666667,-2.666666667,1.333333333,1.333333333,1.333333333,0.18,0.818181818,0.818181818,0.818181818
+HEC Paris,289801.0,0.91,4.4,265.0,38.8,67.3,10.0,,83.0,2.0,96.0,96.0,9.09,9.21,42.0,30.0,76.62,80.648,118999.0,114357.0,44.0,41.0,99 (93),64.0,56.0,91.102,85,18.0,4.0,0.0,0.0,5.0,2.0,4.0,0.0,0.0,6.0,-9.0,9.0,3.0,5.0,0.093591025,0.245326691,0.175451303,0.487086093,0.177556571,0.093591025,1.333333333,0.0,0.0,1.666666667,-0.666666667,-0.272727273,-0.272727273,-0.272727273,0.145,2.454545455,2.454545455,2.454545455
+ESCP Business School,184493.0,1.77,4.2,104.0,,81.1,10.0,,95.0,6.0,100.0,100.0,8.82,8.72,68.0,39.0,52.11,57.454,95742.0,89003.0,78.0,78.0,99 (99),86.0,94.0,85.947,100,18.0,4.0,-2.0,1.0,-18.0,20.0,0.0,0.0,1.0,-6.0,21.0,-13.0,0.0,10.0,0.083517646,0.212778378,0.117647059,0.12906104,0.158792102,0.083517646,0.0,-16.66666667,-9.666666667,-2.0,-2.0,-1.0,-1.0,-1.0,-0.105,-4.454545455,-4.454545455,-4.454545455
+</dataframe>
+
+<conversation>
+User 1: What are the ML models you will suggest to make a predictive model to predict the rank using the data
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-18 20:50:56 [INFO] Question: If we plot a scatterplot with comparision to column Rank Change 2022-2021 with other columns what are the key insights?
+2023-10-18 20:50:56 [INFO] Running PandasAI with openai LLM...
+2023-10-18 20:50:56 [INFO] Prompt ID: 55df841f-94b0-4d3f-8112-8a643da21323
+2023-10-18 20:50:56 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 125 rows and 60 columns.
+This is the metadata of the dataframe dfs[0]:
+School Name,LinkedIn Followers,Instagram engagement %,Google Rating,Google Number of Reviews,Research Quality,Citations per Faculty,Average Experience of Faculty,Students per Staff,International board (%) 2022,Threeyear average 2022,Faculty with doctorates (%) 2022,Faculty with doctorates (%) 2021,Overall satisfaction 2022,Overall satisfaction 2021,Women on board (%) 2022,Female faculty (%) 2022,Salary percentage increase 2022,Salary percentage increase 2021,Weighted salary (US$) 2022,Weighted salary (US$) 2021,Value for money rank 2022,Value for money rank 2021,Employed at three months (%) 2022,International faculty (%) 2022,International students (%) 2022,Aims achieved (%) 2022,Internships (%),Average course length (months),Length of Programme(terms),Rank Change 2022-2021,Rank Change 2021-2020,Careers service rank 2022-2021,Careers service rank 2021-2020,International course experience rank 2022-2021,International course experience rank 2021-2020,International work mobility rank 2022-2021,International work mobility rank 2021-2020,Career progress rank 2022-2021,Career progress rank 2021-2020,Value for money rank 2022-2021,Value for money rank 2021-2020,Rank Stability,Careers service Rank Stability,International course experience Rank Stability,International work mobility Rank Stability,Career progress Rank Stability,Value for money Rank Stability,Faculty Change,International Board Change,Women on board Change,International faculty Change,International students Change,Female students (%) 2022 Change,Female faculty (%) 2022 Change,Women on board (%) 2022 Change,Satisfaction Change,International students (%) 2022 Change,International faculty (%) 2022 Change,International board (%) 2022 Change
+University of St Gallen,114985.0,0.68,4.5,217.0,81.4,22.8,10.0,12.9,53.0,1.0,100.0,100.0,9.76,9.82,33.0,24.0,62.25,59.63,138091.0,123999.0,15.0,15.0,97 (100),83.0,93.0,95.573,100,26.0,3.0,0.0,0.0,0.0,0.0,3.0,-1.0,0.0,-7.0,-14.0,-1.0,0.0,-1.0,0.037248404,0.0,0.320256308,0.629340559,0.141871103,0.037248404,0.0,0.0,-0.333333333,-1.0,2.333333333,-1.909090909,-1.909090909,-1.909090909,0.11,-3.636363636,-3.636363636,-3.636363636
+London Business School,536866.0,0.45,4.8,322.0,95.4,55.5,11.0,12.6,81.0,5.0,99.0,99.0,9.57,9.43,43.0,31.0,52.58,61.125,103489.0,100789.0,71.0,67.0,93 (99),85.0,96.0,91.002,30,10.0,3.0,3.0,0.0,0.0,2.0,0.0,0.0,-1.0,0.0,44.0,-26.0,4.0,2.0,0.056979883,0.260869565,0.138564065,0.329212078,0.455193902,0.056979883,0.0,-1.666666667,0.666666667,-0.333333333,0.0,1.111111111,1.111111111,1.111111111,-0.155,-1.818181818,-1.818181818,-1.818181818
+Essec Business School,190577.0,3.28,4.4,266.0,24.9,76.5,10.0,19.4,87.0,5.0,100.0,100.0,9.01,9.26,60.0,36.0,52.43,68.756,96988.0,99804.0,68.0,57.0,98 (95),71.0,64.0,88.716,100,18.0,4.0,0.0,3.0,9.0,1.0,-8.0,0.0,0.0,6.0,26.0,3.0,11.0,8.0,0.136570655,0.373174569,0.385627093,0.158031596,0.252924578,0.136570655,-0.333333333,-4.666666667,-5.0,-4.666666667,-2.666666667,1.333333333,1.333333333,1.333333333,0.18,0.818181818,0.818181818,0.818181818
+HEC Paris,289801.0,0.91,4.4,265.0,38.8,67.3,10.0,,83.0,2.0,96.0,96.0,9.09,9.21,42.0,30.0,76.62,80.648,118999.0,114357.0,44.0,41.0,99 (93),64.0,56.0,91.102,85,18.0,4.0,0.0,0.0,5.0,2.0,4.0,0.0,0.0,6.0,-9.0,9.0,3.0,5.0,0.093591025,0.245326691,0.175451303,0.487086093,0.177556571,0.093591025,1.333333333,0.0,0.0,1.666666667,-0.666666667,-0.272727273,-0.272727273,-0.272727273,0.145,2.454545455,2.454545455,2.454545455
+ESCP Business School,184493.0,1.77,4.2,104.0,,81.1,10.0,,95.0,6.0,100.0,100.0,8.82,8.72,68.0,39.0,52.11,57.454,95742.0,89003.0,78.0,78.0,99 (99),86.0,94.0,85.947,100,18.0,4.0,-2.0,1.0,-18.0,20.0,0.0,0.0,1.0,-6.0,21.0,-13.0,0.0,10.0,0.083517646,0.212778378,0.117647059,0.12906104,0.158792102,0.083517646,0.0,-16.66666667,-9.666666667,-2.0,-2.0,-1.0,-1.0,-1.0,-0.105,-4.454545455,-4.454545455,-4.454545455
+</dataframe>
+
+<conversation>
+User 1: If we plot a scatterplot with comparision to column Rank Change 2022-2021 with other columns what are the key insights?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-18 20:51:34 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df = dfs[0]  # Assuming we are working with the first dataframe in the list
+    
+    # Process: Manipulating data for analysis
+    columns_to_compare = ['Rank Change 2022-2021', 'LinkedIn Followers', 'Instagram engagement %', 'Google Rating', 'Google Number of Reviews']
+    df_filtered = df[columns_to_compare].dropna()  # Filter out rows with missing values
+    
+    # Analyze: Conducting the actual analysis
+    fig, ax = plt.subplots(figsize=(10, 6))
+    for column in columns_to_compare[1:]:
+        ax.scatter(df_filtered['Rank Change 2022-2021'], df_filtered[column], label=column)
+    ax.set_xlabel('Rank Change 2022-2021')
+    ax.set_ylabel('Column Values')
+    ax.set_title('Scatterplot of Rank Change 2022-2021 vs Other Columns')
+    ax.legend()
+    
+    # Save the plot to an image file
+    plt.savefig('temp_chart.png')
+    plt.close(fig)
+    
+    return {"type": "plot", "value": "temp_chart.png"}
+```
+
+2023-10-18 20:51:34 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    df = dfs[0]
+    columns_to_compare = ['Rank Change 2022-2021', 'LinkedIn Followers', 'Instagram engagement %', 'Google Rating', 'Google Number of Reviews']
+    df_filtered = df[columns_to_compare].dropna()
+    fig, ax = plt.subplots(figsize=(10, 6))
+    for column in columns_to_compare[1:]:
+        ax.scatter(df_filtered['Rank Change 2022-2021'], df_filtered[column], label=column)
+    ax.set_xlabel('Rank Change 2022-2021')
+    ax.set_ylabel('Column Values')
+    ax.set_title('Scatterplot of Rank Change 2022-2021 vs Other Columns')
+    ax.legend()
+    plt.savefig('temp_chart.png')
+    plt.close(fig)
+    return {'type': 'plot', 'value': 'temp_chart.png'}
+        ```
+2023-10-18 20:51:35 [INFO] Answer: {'type': 'plot', 'value': 'temp_chart.png'}
+2023-10-18 20:51:35 [INFO] Executed in: 38.858903884887695s
+2023-10-18 20:53:55 [INFO] Question: Looking at above charts can you give some key insights?
+2023-10-18 20:53:55 [INFO] Running PandasAI with openai LLM...
+2023-10-18 20:53:55 [INFO] Prompt ID: 8f3f5c18-96f8-426f-a2f0-767a44cb86ab
+2023-10-18 20:53:55 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 125 rows and 60 columns.
+This is the metadata of the dataframe dfs[0]:
+School Name,LinkedIn Followers,Instagram engagement %,Google Rating,Google Number of Reviews,Research Quality,Citations per Faculty,Average Experience of Faculty,Students per Staff,International board (%) 2022,Threeyear average 2022,Faculty with doctorates (%) 2022,Faculty with doctorates (%) 2021,Overall satisfaction 2022,Overall satisfaction 2021,Women on board (%) 2022,Female faculty (%) 2022,Salary percentage increase 2022,Salary percentage increase 2021,Weighted salary (US$) 2022,Weighted salary (US$) 2021,Value for money rank 2022,Value for money rank 2021,Employed at three months (%) 2022,International faculty (%) 2022,International students (%) 2022,Aims achieved (%) 2022,Internships (%),Average course length (months),Length of Programme(terms),Rank Change 2022-2021,Rank Change 2021-2020,Careers service rank 2022-2021,Careers service rank 2021-2020,International course experience rank 2022-2021,International course experience rank 2021-2020,International work mobility rank 2022-2021,International work mobility rank 2021-2020,Career progress rank 2022-2021,Career progress rank 2021-2020,Value for money rank 2022-2021,Value for money rank 2021-2020,Rank Stability,Careers service Rank Stability,International course experience Rank Stability,International work mobility Rank Stability,Career progress Rank Stability,Value for money Rank Stability,Faculty Change,International Board Change,Women on board Change,International faculty Change,International students Change,Female students (%) 2022 Change,Female faculty (%) 2022 Change,Women on board (%) 2022 Change,Satisfaction Change,International students (%) 2022 Change,International faculty (%) 2022 Change,International board (%) 2022 Change
+University of St Gallen,114985.0,0.68,4.5,217.0,81.4,22.8,10.0,12.9,53.0,1.0,100.0,100.0,9.76,9.82,33.0,24.0,62.25,59.63,138091.0,123999.0,15.0,15.0,97 (100),83.0,93.0,95.573,100,26.0,3.0,0.0,0.0,0.0,0.0,3.0,-1.0,0.0,-7.0,-14.0,-1.0,0.0,-1.0,0.037248404,0.0,0.320256308,0.629340559,0.141871103,0.037248404,0.0,0.0,-0.333333333,-1.0,2.333333333,-1.909090909,-1.909090909,-1.909090909,0.11,-3.636363636,-3.636363636,-3.636363636
+London Business School,536866.0,0.45,4.8,322.0,95.4,55.5,11.0,12.6,81.0,5.0,99.0,99.0,9.57,9.43,43.0,31.0,52.58,61.125,103489.0,100789.0,71.0,67.0,93 (99),85.0,96.0,91.002,30,10.0,3.0,3.0,0.0,0.0,2.0,0.0,0.0,-1.0,0.0,44.0,-26.0,4.0,2.0,0.056979883,0.260869565,0.138564065,0.329212078,0.455193902,0.056979883,0.0,-1.666666667,0.666666667,-0.333333333,0.0,1.111111111,1.111111111,1.111111111,-0.155,-1.818181818,-1.818181818,-1.818181818
+Essec Business School,190577.0,3.28,4.4,266.0,24.9,76.5,10.0,19.4,87.0,5.0,100.0,100.0,9.01,9.26,60.0,36.0,52.43,68.756,96988.0,99804.0,68.0,57.0,98 (95),71.0,64.0,88.716,100,18.0,4.0,0.0,3.0,9.0,1.0,-8.0,0.0,0.0,6.0,26.0,3.0,11.0,8.0,0.136570655,0.373174569,0.385627093,0.158031596,0.252924578,0.136570655,-0.333333333,-4.666666667,-5.0,-4.666666667,-2.666666667,1.333333333,1.333333333,1.333333333,0.18,0.818181818,0.818181818,0.818181818
+HEC Paris,289801.0,0.91,4.4,265.0,38.8,67.3,10.0,,83.0,2.0,96.0,96.0,9.09,9.21,42.0,30.0,76.62,80.648,118999.0,114357.0,44.0,41.0,99 (93),64.0,56.0,91.102,85,18.0,4.0,0.0,0.0,5.0,2.0,4.0,0.0,0.0,6.0,-9.0,9.0,3.0,5.0,0.093591025,0.245326691,0.175451303,0.487086093,0.177556571,0.093591025,1.333333333,0.0,0.0,1.666666667,-0.666666667,-0.272727273,-0.272727273,-0.272727273,0.145,2.454545455,2.454545455,2.454545455
+ESCP Business School,184493.0,1.77,4.2,104.0,,81.1,10.0,,95.0,6.0,100.0,100.0,8.82,8.72,68.0,39.0,52.11,57.454,95742.0,89003.0,78.0,78.0,99 (99),86.0,94.0,85.947,100,18.0,4.0,-2.0,1.0,-18.0,20.0,0.0,0.0,1.0,-6.0,21.0,-13.0,0.0,10.0,0.083517646,0.212778378,0.117647059,0.12906104,0.158792102,0.083517646,0.0,-16.66666667,-9.666666667,-2.0,-2.0,-1.0,-1.0,-1.0,-0.105,-4.454545455,-4.454545455,-4.454545455
+</dataframe>
+
+<conversation>
+User 1: Looking at above charts can you give some key insights?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-18 20:54:32 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare: No preprocessing or cleaning required
+    
+    # Process: Extract key insights from the data
+    insights = []
+    
+    # Insight 1: School with the highest number of LinkedIn followers
+    max_linkedin_followers = dfs[0]['LinkedIn Followers'].max()
+    school_with_max_linkedin_followers = dfs[0].loc[dfs[0]['LinkedIn Followers'] == max_linkedin_followers, 'School Name'].values[0]
+    insights.append(f"The school with the highest number of LinkedIn followers is {school_with_max_linkedin_followers}.")
+    
+    # Insight 2: School with the highest Instagram engagement percentage
+    max_instagram_engagement = dfs[0]['Instagram engagement %'].max()
+    school_with_max_instagram_engagement = dfs[0].loc[dfs[0]['Instagram engagement %'] == max_instagram_engagement, 'School Name'].values[0]
+    insights.append(f"The school with the highest Instagram engagement percentage is {school_with_max_instagram_engagement}.")
+    
+    # Insight 3: School with the highest Google rating
+    max_google_rating = dfs[0]['Google Rating'].max()
+    school_with_max_google_rating = dfs[0].loc[dfs[0]['Google Rating'] == max_google_rating, 'School Name'].values[0]
+    insights.append(f"The school with the highest Google rating is {school_with_max_google_rating}.")
+    
+    # Analyze: Return the insights as a string
+    return {"type": "string", "value": "\n".join(insights)}
+```
+
+2023-10-18 20:54:32 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    insights = []
+    max_linkedin_followers = dfs[0]['LinkedIn Followers'].max()
+    school_with_max_linkedin_followers = dfs[0].loc[dfs[0]['LinkedIn Followers'] == max_linkedin_followers, 'School Name'].values[0]
+    insights.append(f'The school with the highest number of LinkedIn followers is {school_with_max_linkedin_followers}.')
+    max_instagram_engagement = dfs[0]['Instagram engagement %'].max()
+    school_with_max_instagram_engagement = dfs[0].loc[dfs[0]['Instagram engagement %'] == max_instagram_engagement, 'School Name'].values[0]
+    insights.append(f'The school with the highest Instagram engagement percentage is {school_with_max_instagram_engagement}.')
+    max_google_rating = dfs[0]['Google Rating'].max()
+    school_with_max_google_rating = dfs[0].loc[dfs[0]['Google Rating'] == max_google_rating, 'School Name'].values[0]
+    insights.append(f'The school with the highest Google rating is {school_with_max_google_rating}.')
+    return {'type': 'string', 'value': '\n'.join(insights)}
+        ```
+2023-10-18 20:54:32 [INFO] Answer: {'type': 'string', 'value': 'The school with the highest number of LinkedIn followers is London Business School.\nThe school with the highest Instagram engagement percentage is Leeds University Business School.\nThe school with the highest Google rating is HKUST Business School.'}
+2023-10-18 20:54:32 [INFO] Executed in: 36.564563274383545s
+2023-10-18 20:56:14 [INFO] Question: Use above Scatterplots to identify any trends, clusters, or outliers
+2023-10-18 20:56:14 [INFO] Running PandasAI with openai LLM...
+2023-10-18 20:56:14 [INFO] Prompt ID: 7dde108f-fb92-4626-9a35-644f12c08f89
+2023-10-18 20:56:14 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 125 rows and 60 columns.
+This is the metadata of the dataframe dfs[0]:
+School Name,LinkedIn Followers,Instagram engagement %,Google Rating,Google Number of Reviews,Research Quality,Citations per Faculty,Average Experience of Faculty,Students per Staff,International board (%) 2022,Threeyear average 2022,Faculty with doctorates (%) 2022,Faculty with doctorates (%) 2021,Overall satisfaction 2022,Overall satisfaction 2021,Women on board (%) 2022,Female faculty (%) 2022,Salary percentage increase 2022,Salary percentage increase 2021,Weighted salary (US$) 2022,Weighted salary (US$) 2021,Value for money rank 2022,Value for money rank 2021,Employed at three months (%) 2022,International faculty (%) 2022,International students (%) 2022,Aims achieved (%) 2022,Internships (%),Average course length (months),Length of Programme(terms),Rank Change 2022-2021,Rank Change 2021-2020,Careers service rank 2022-2021,Careers service rank 2021-2020,International course experience rank 2022-2021,International course experience rank 2021-2020,International work mobility rank 2022-2021,International work mobility rank 2021-2020,Career progress rank 2022-2021,Career progress rank 2021-2020,Value for money rank 2022-2021,Value for money rank 2021-2020,Rank Stability,Careers service Rank Stability,International course experience Rank Stability,International work mobility Rank Stability,Career progress Rank Stability,Value for money Rank Stability,Faculty Change,International Board Change,Women on board Change,International faculty Change,International students Change,Female students (%) 2022 Change,Female faculty (%) 2022 Change,Women on board (%) 2022 Change,Satisfaction Change,International students (%) 2022 Change,International faculty (%) 2022 Change,International board (%) 2022 Change
+University of St Gallen,114985.0,0.68,4.5,217.0,81.4,22.8,10.0,12.9,53.0,1.0,100.0,100.0,9.76,9.82,33.0,24.0,62.25,59.63,138091.0,123999.0,15.0,15.0,97 (100),83.0,93.0,95.573,100,26.0,3.0,0.0,0.0,0.0,0.0,3.0,-1.0,0.0,-7.0,-14.0,-1.0,0.0,-1.0,0.037248404,0.0,0.320256308,0.629340559,0.141871103,0.037248404,0.0,0.0,-0.333333333,-1.0,2.333333333,-1.909090909,-1.909090909,-1.909090909,0.11,-3.636363636,-3.636363636,-3.636363636
+London Business School,536866.0,0.45,4.8,322.0,95.4,55.5,11.0,12.6,81.0,5.0,99.0,99.0,9.57,9.43,43.0,31.0,52.58,61.125,103489.0,100789.0,71.0,67.0,93 (99),85.0,96.0,91.002,30,10.0,3.0,3.0,0.0,0.0,2.0,0.0,0.0,-1.0,0.0,44.0,-26.0,4.0,2.0,0.056979883,0.260869565,0.138564065,0.329212078,0.455193902,0.056979883,0.0,-1.666666667,0.666666667,-0.333333333,0.0,1.111111111,1.111111111,1.111111111,-0.155,-1.818181818,-1.818181818,-1.818181818
+Essec Business School,190577.0,3.28,4.4,266.0,24.9,76.5,10.0,19.4,87.0,5.0,100.0,100.0,9.01,9.26,60.0,36.0,52.43,68.756,96988.0,99804.0,68.0,57.0,98 (95),71.0,64.0,88.716,100,18.0,4.0,0.0,3.0,9.0,1.0,-8.0,0.0,0.0,6.0,26.0,3.0,11.0,8.0,0.136570655,0.373174569,0.385627093,0.158031596,0.252924578,0.136570655,-0.333333333,-4.666666667,-5.0,-4.666666667,-2.666666667,1.333333333,1.333333333,1.333333333,0.18,0.818181818,0.818181818,0.818181818
+HEC Paris,289801.0,0.91,4.4,265.0,38.8,67.3,10.0,,83.0,2.0,96.0,96.0,9.09,9.21,42.0,30.0,76.62,80.648,118999.0,114357.0,44.0,41.0,99 (93),64.0,56.0,91.102,85,18.0,4.0,0.0,0.0,5.0,2.0,4.0,0.0,0.0,6.0,-9.0,9.0,3.0,5.0,0.093591025,0.245326691,0.175451303,0.487086093,0.177556571,0.093591025,1.333333333,0.0,0.0,1.666666667,-0.666666667,-0.272727273,-0.272727273,-0.272727273,0.145,2.454545455,2.454545455,2.454545455
+ESCP Business School,184493.0,1.77,4.2,104.0,,81.1,10.0,,95.0,6.0,100.0,100.0,8.82,8.72,68.0,39.0,52.11,57.454,95742.0,89003.0,78.0,78.0,99 (99),86.0,94.0,85.947,100,18.0,4.0,-2.0,1.0,-18.0,20.0,0.0,0.0,1.0,-6.0,21.0,-13.0,0.0,10.0,0.083517646,0.212778378,0.117647059,0.12906104,0.158792102,0.083517646,0.0,-16.66666667,-9.666666667,-2.0,-2.0,-1.0,-1.0,-1.0,-0.105,-4.454545455,-4.454545455,-4.454545455
+</dataframe>
+
+<conversation>
+User 1: Use above Scatterplots to identify any trends, clusters, or outliers
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-18 20:56:42 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare: No preprocessing or cleaning required
+    
+    # Process: Extract relevant columns from the dataframe
+    df = dfs[0][['LinkedIn Followers', 'Instagram engagement %', 'Google Rating', 'Google Number of Reviews']]
+    
+    # Analyze: Create scatterplots
+    scatterplot1 = df.plot.scatter(x='LinkedIn Followers', y='Instagram engagement %')
+    scatterplot1.figure.savefig('scatterplot1.png')
+    
+    scatterplot2 = df.plot.scatter(x='Google Rating', y='Google Number of Reviews')
+    scatterplot2.figure.savefig('scatterplot2.png')
+    
+    return [
+        { "type": "plot", "value": "scatterplot1.png" },
+        { "type": "plot", "value": "scatterplot2.png" }
+    ]
+```
+
+2023-10-18 20:56:42 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    df = dfs[0][['LinkedIn Followers', 'Instagram engagement %', 'Google Rating', 'Google Number of Reviews']]
+    scatterplot1 = df.plot.scatter(x='LinkedIn Followers', y='Instagram engagement %')
+    scatterplot1.figure.savefig('scatterplot1.png')
+    scatterplot2 = df.plot.scatter(x='Google Rating', y='Google Number of Reviews')
+    scatterplot2.figure.savefig('scatterplot2.png')
+    return [{'type': 'plot', 'value': 'scatterplot1.png'}, {'type': 'plot', 'value': 'scatterplot2.png'}]
+        ```
+2023-10-18 20:56:43 [INFO] Answer: [{'type': 'plot', 'value': 'scatterplot1.png'}, {'type': 'plot', 'value': 'scatterplot2.png'}]
+2023-10-18 20:56:43 [INFO] Executed in: 28.542640209197998s
