@@ -3039,3 +3039,9 @@ def analyze_data(dfs: list[pd.DataFrame]) ->dict:
         ```
 2023-10-18 20:56:43 [INFO] Answer: [{'type': 'plot', 'value': 'scatterplot1.png'}, {'type': 'plot', 'value': 'scatterplot2.png'}]
 2023-10-18 20:56:43 [INFO] Executed in: 28.542640209197998s
+2023-10-25 13:56:36 [INFO] Question: Give me the Summary Statistics-key summary statistics, such as mean, median, and standard deviation
+2023-10-25 13:56:36 [INFO] Running PandasAI with openai LLM...
+2023-10-25 13:56:36 [INFO] Prompt ID: 3a07bf23-de19-44c8-93bf-035611296dcc
+2023-11-03 12:52:43 [INFO] Question: Give me the metadata for this dataframe
+2023-11-03 12:52:43 [INFO] Running PandasAI with openai LLM...
+2023-11-03 12:52:43 [INFO] Prompt ID: 8ef91142-1fef-400c-bd1c-2c78f8ef999a

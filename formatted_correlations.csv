@@ -1,0 +1,447 @@
+Column 1,Column 2,Correlation
+2019.Weighted salary (US$),2019.Salary today (US$),1
+2019.Salary today (US$),2019.Weighted salary (US$),1
+2020.Salary today (US$),2020.Weighted salary (US$),1
+2020.Weighted salary (US$),2020.Salary today (US$),1
+2021.Salary today (US$) *,2021.Weighted salary (US$),1
+2021.Weighted salary (US$),2021.Salary today (US$) *,1
+2020.Company internships (%),2021.Company internships (%),0.99
+2021.Company internships (%),2020.Company internships (%),0.99
+2022.International faculty (%),2021.International faculty (%),0.99
+2021.International faculty (%),2022.International faculty (%),0.99
+2019.Three-year average,2020.Three-year average,0.99
+2020.Three-year average,2019.Three-year average,0.99
+2021.International faculty (%),2020.International faculty (%),0.99
+2020.International faculty (%),2021.International faculty (%),0.99
+2019.Three-year average,2018.#,0.99
+2019.Rank in 2018,2019.Three-year average,0.99
+2019.Three-year average,2019.Rank in 2018,0.99
+2018.#,2019.Three-year average,0.99
+2021.International course experience rank,2019.International course experience rank,0.99
+2019.International course experience rank,2021.International course experience rank,0.99
+2020.Number enrolled 2019/20,2018.Number enrolled 2017/18,0.99
+2018.Number enrolled 2017/18,2020.Number enrolled 2019/20,0.99
+2020.Three-year average,2019.#,0.98
+2020.Rank in 2019,2020.Three-year average,0.98
+2019.#,2020.Three-year average,0.98
+2020.Three-year average,2020.Rank in 2019,0.98
+2020.Rank in 2018,2019.Three-year average,0.98
+2019.Three-year average,2020.Rank in 2018,0.98
+2018.3-year average,2019.Rank in 2017,0.98
+2019.Rank in 2017,2018.3-year average,0.98
+2020.International course experience rank,2021.International course experience rank,0.98
+2021.International course experience rank,2020.International course experience rank,0.98
+2022.Threeyear average,2022.Rank in 2021,0.98
+2022.Rank in 2021,2022.Threeyear average,0.98
+2019.Three-year average,2019.#,0.98
+2019.#,2019.Three-year average,0.98
+2018.Number enrolled 2017/18,2019.Number enrolled 2018/19*,0.98
+2019.Number enrolled 2018/19*,2018.Number enrolled 2017/18,0.98
+2019.Three-year average,2018.3-year average,0.98
+2018.3-year average,2019.Three-year average,0.98
+2018.Company internships (%),2019.Company internships (%)*,0.98
+2019.Company internships (%)*,2018.Company internships (%),0.98
+2021.Value for money rank,2022.Value for money rank,0.98
+2022.Value for money rank,2021.Value for money rank,0.98
+2019.International course experience rank,2020.International course experience rank,0.98
+2020.International course experience rank,2019.International course experience rank,0.98
+2018.International faculty (%),2020.International faculty (%),0.98
+2020.International faculty (%),2018.International faculty (%),0.98
+2019.Number enrolled 2018/19*,2020.Number enrolled 2019/20,0.98
+2020.Number enrolled 2019/20,2019.Number enrolled 2018/19*,0.98
+2019.Three-year average,2019.Rank in 2017,0.98
+2019.Rank in 2017,2019.Three-year average,0.98
+2019.Three-year average,2020.Rank in 2019,0.98
+2020.Rank in 2019,2019.Three-year average,0.98
+2020.Salary today (US$),2021.Salary today (US$) *,0.98
+2021.Salary today (US$) *,2020.Salary today (US$),0.98
+2022.International faculty (%),2020.International faculty (%),0.98
+2020.International faculty (%),2022.International faculty (%),0.98
+2021.Weighted salary (US$),2020.Weighted salary (US$),0.98
+2020.Weighted salary (US$),2021.Weighted salary (US$),0.98
+2020.Salary today (US$),2021.Weighted salary (US$),0.98
+2021.Weighted salary (US$),2020.Salary today (US$),0.98
+2020.Weighted salary (US$),2021.Salary today (US$) *,0.98
+2021.Salary today (US$) *,2020.Weighted salary (US$),0.98
+2020.#,2022.Threeyear average,0.98
+2022.Threeyear average,2020.#,0.98
+2022.Rank in 2020,2022.Threeyear average,0.98
+2022.Threeyear average,2022.Rank in 2020,0.98
+2022.Rank in 2020,2020.Three-year average,0.98
+2020.Three-year average,2022.Rank in 2020,0.98
+2018.3-year average,2018.#,0.98
+2018.#,2018.3-year average,0.98
+2020.Three-year average,2019.Rank in 2018,0.97
+2018.#,2020.Three-year average,0.97
+2019.Rank in 2018,2020.Three-year average,0.97
+2020.Three-year average,2020.Rank in 2018,0.97
+2020.Rank in 2018,2020.Three-year average,0.97
+2020.Three-year average,2018.#,0.97
+2019.Salary today (US$),2020.Salary today (US$),0.97
+2020.Salary today (US$),2019.Salary today (US$),0.97
+2019.Weighted salary (US$),2020.Salary today (US$),0.97
+2020.Salary today (US$),2019.Weighted salary (US$),0.97
+2020.#,2020.Three-year average,0.97
+2020.Three-year average,2020.#,0.97
+2019.Weighted salary (US$),2020.Weighted salary (US$),0.97
+2020.Weighted salary (US$),2019.Weighted salary (US$),0.97
+2019.Languages,2018.Languages,0.97
+2018.Languages,2019.Languages,0.97
+2018.3-year average,2019.Rank in 2018,0.97
+2019.Rank in 2018,2018.3-year average,0.97
+2019.International faculty (%),2021.International faculty (%),0.97
+2021.International faculty (%),2019.International faculty (%),0.97
+2019.Salary today (US$),2020.Weighted salary (US$),0.97
+2020.Weighted salary (US$),2019.Salary today (US$),0.97
+2019.Value for money rank,2020.Value for money rank,0.97
+2020.Value for money rank,2019.Value for money rank,0.97
+2021.Value for money rank,2020.Value for money rank,0.97
+2020.Value for money rank,2021.Value for money rank,0.97
+2019.Salary today (US$),2018.Salary today (US$),0.97
+2018.Salary today (US$),2019.Salary today (US$),0.97
+2020.Rank in 2018,2018.3-year average,0.97
+2018.3-year average,2020.Rank in 2018,0.97
+2018.Salary today (US$),2019.Weighted salary (US$),0.97
+2019.Weighted salary (US$),2018.Salary today (US$),0.97
+2022.International faculty (%),2019.International faculty (%),0.97
+2019.International faculty (%),2022.International faculty (%),0.97
+2019.Value for money rank,2021.Value for money rank,0.96
+2021.Value for money rank,2019.Value for money rank,0.96
+2020.Three-year average,2022.Threeyear average,0.96
+2022.Threeyear average,2020.Three-year average,0.96
+2018.International faculty (%),2021.International faculty (%),0.96
+2021.International faculty (%),2018.International faculty (%),0.96
+2021.Weighted salary (US$),2022.Weighted salary (US$),0.96
+2022.Weighted salary (US$),2021.Weighted salary (US$),0.96
+2022.Weighted salary (US$),2021.Salary today (US$) *,0.96
+2021.Salary today (US$) *,2022.Weighted salary (US$),0.96
+2021.Female faculty (%),2022.Female faculty (%),0.96
+2022.Female faculty (%),2021.Female faculty (%),0.96
+2019.International students (%),2018.International students (%),0.96
+2018.International students (%),2019.International students (%),0.96
+2020.Average course length (months),2018.Course length (months),0.96
+2018.Course length (months),2020.Average course length (months),0.96
+2019.Rank in 2018,2019.#,0.96
+2019.#,2019.Rank in 2018,0.96
+2018.#,2019.#,0.96
+2019.#,2018.#,0.96
+2022.Faculty with doctorates (%),2021.Faculty with doctorates (%),0.96
+2021.Faculty with doctorates (%),2022.Faculty with doctorates (%),0.96
+2022.International faculty (%),2018.International faculty (%),0.96
+2018.International faculty (%),2022.International faculty (%),0.96
+2019.Weighted salary (US$),2021.Salary today (US$) *,0.96
+2021.Salary today (US$) *,2019.Weighted salary (US$),0.96
+2020.Value for money rank,2022.Value for money rank,0.96
+2022.Value for money rank,2020.Value for money rank,0.96
+2018.#,2019.Rank in 2017,0.95
+2019.Rank in 2017,2019.Rank in 2018,0.95
+2019.Rank in 2017,2018.#,0.95
+2019.Rank in 2018,2019.Rank in 2017,0.95
+2019.Salary today (US$),2021.Salary today (US$) *,0.95
+2021.Salary today (US$) *,2019.Salary today (US$),0.95
+2019.International work mobility rank,2018.International mobility rank,0.95
+2018.International mobility rank,2019.International work mobility rank,0.95
+2022.Average course length (months),2020.Average course length (months),0.95
+2020.Average course length (months),2022.Average course length (months),0.95
+2019.Weighted salary (US$),2021.Weighted salary (US$),0.95
+2021.Weighted salary (US$),2019.Weighted salary (US$),0.95
+2020.Three-year average,2018.3-year average,0.95
+2018.3-year average,2020.Three-year average,0.95
+2019.Salary today (US$),2021.Weighted salary (US$),0.95
+2021.Weighted salary (US$),2019.Salary today (US$),0.95
+2020.International students (%),2019.International students (%),0.95
+2019.International students (%),2020.International students (%),0.95
+2022.Rank in 2020,2022.Rank in 2021,0.95
+2022.Rank in 2021,2022.Rank in 2020,0.95
+2022.Rank in 2021,2020.#,0.95
+2020.#,2022.Rank in 2021,0.95
+2018.International faculty (%),2019.International faculty (%),0.95
+2019.International faculty (%),2018.International faculty (%),0.95
+2022.Rank in 2020,2020.Rank in 2019,0.95
+2020.Rank in 2019,2022.Rank in 2020,0.95
+2022.International students (%),2021.International students (%),0.95
+2021.International students (%),2022.International students (%),0.95
+2022.Rank in 2021,2020.Three-year average,0.95
+2020.Three-year average,2022.Rank in 2021,0.95
+2019.International faculty (%),2020.International faculty (%),0.95
+2020.International faculty (%),2019.International faculty (%),0.95
+2020.Rank in 2018,2019.Rank in 2017,0.95
+2019.Rank in 2017,2020.Rank in 2018,0.95
+2020.Rank in 2018,2020.Rank in 2019,0.95
+2020.Rank in 2019,2019.Rank in 2018,0.95
+2019.Rank in 2018,2020.Rank in 2019,0.95
+2019.#,2020.Rank in 2018,0.95
+2020.Rank in 2018,2019.#,0.95
+2020.Rank in 2019,2020.Rank in 2018,0.95
+2020.#,2020.Rank in 2019,0.95
+2020.Rank in 2019,2020.#,0.95
+2018.#,2020.Rank in 2019,0.94
+2020.Rank in 2019,2018.#,0.94
+2018.Female faculty (%),2019.Female faculty (%),0.94
+2019.Female faculty (%),2018.Female faculty (%),0.94
+2020.Three-year average,2019.Rank in 2017,0.94
+2019.Rank in 2017,2020.Three-year average,0.94
+2020.Salary today (US$),2018.Salary today (US$),0.94
+2018.Salary today (US$),2020.Salary today (US$),0.94
+2021.International work mobility rank,2022.International work mobility rank,0.94
+2022.International work mobility rank,2021.International work mobility rank,0.94
+2018.Salary today (US$),2020.Weighted salary (US$),0.94
+2020.Weighted salary (US$),2018.Salary today (US$),0.94
+2018.International board (%),2019.International board (%),0.94
+2019.International board (%),2018.International board (%),0.94
+2022.Rank in 2020,2019.Three-year average,0.94
+2019.Three-year average,2022.Rank in 2020,0.94
+2019.Three-year average,2020.#,0.94
+2020.#,2019.Three-year average,0.94
+2020.International students (%),2021.International students (%),0.94
+2021.International students (%),2020.International students (%),0.94
+2021.International students (%),2019.International students (%),0.94
+2019.International students (%),2021.International students (%),0.94
+2019.#,2022.Rank in 2020,0.94
+2022.Rank in 2020,2019.#,0.94
+2022.Threeyear average,2020.Rank in 2019,0.94
+2020.Rank in 2019,2022.Threeyear average,0.94
+2020.Weighted salary (US$),2022.Weighted salary (US$),0.94
+2022.Weighted salary (US$),2020.Weighted salary (US$),0.94
+2022.Rank in 2021,2019.Three-year average,0.94
+2019.Three-year average,2022.Rank in 2021,0.94
+2020.Salary today (US$),2022.Weighted salary (US$),0.93
+2022.Weighted salary (US$),2020.Salary today (US$),0.93
+2022.International students (%),2020.International students (%),0.93
+2020.International students (%),2022.International students (%),0.93
+2020.#,2019.#,0.93
+2019.#,2020.#,0.93
+2022.Rank in 2021,2020.Rank in 2019,0.93
+2020.Rank in 2019,2022.Rank in 2021,0.93
+2019.#,2018.3-year average,0.93
+2018.3-year average,2019.#,0.93
+2020.International students (%),2018.International students (%),0.93
+2018.International students (%),2020.International students (%),0.93
+2019.Company internships (%)*,2020.Company internships (%),0.93
+2020.Company internships (%),2019.Company internships (%)*,0.93
+2022.Threeyear average,2019.Three-year average,0.93
+2019.Three-year average,2022.Threeyear average,0.93
+2019.Value for money rank,2022.Value for money rank,0.93
+2022.Value for money rank,2019.Value for money rank,0.93
+2019.Company internships (%)*,2021.Company internships (%),0.93
+2021.Company internships (%),2019.Company internships (%)*,0.93
+2019.#,2019.Rank in 2017,0.92
+2019.Rank in 2017,2019.#,0.92
+2018.3-year average,2020.Rank in 2019,0.92
+2020.Rank in 2019,2018.3-year average,0.92
+2021.Female faculty (%),2019.Female faculty (%),0.92
+2019.Female faculty (%),2021.Female faculty (%),0.92
+2018.Salary today (US$),2021.Salary today (US$) *,0.92
+2021.Salary today (US$) *,2018.Salary today (US$),0.92
+2020.Company internships (%),2018.Company internships (%),0.92
+2018.Company internships (%),2020.Company internships (%),0.92
+2021.Weighted salary (US$),2018.Salary today (US$),0.92
+2018.Salary today (US$),2021.Weighted salary (US$),0.92
+2019.#,2022.Threeyear average,0.92
+2022.Threeyear average,2019.#,0.92
+2021.International work mobility rank,2020.International work mobility rank,0.92
+2020.International work mobility rank,2021.International work mobility rank,0.92
+2019.Rank in 2018,2020.#,0.92
+2020.#,2019.Rank in 2018,0.92
+2019.#,2022.Rank in 2021,0.92
+2022.Rank in 2021,2019.#,0.92
+2019.Rank in 2018,2022.Rank in 2020,0.92
+2022.Rank in 2020,2019.Rank in 2018,0.92
+2019.Rank in 2017,2020.Rank in 2019,0.92
+2020.Rank in 2019,2019.Rank in 2017,0.92
+2019.Rank in 2018,2022.Threeyear average,0.91
+2022.Threeyear average,2019.Rank in 2018,0.91
+2020.International work mobility rank,2019.International work mobility rank,0.91
+2019.International work mobility rank,2020.International work mobility rank,0.91
+2018.#,2022.Rank in 2020,0.91
+2022.Rank in 2020,2018.#,0.91
+2018.Company internships (%),2021.Company internships (%),0.91
+2021.Company internships (%),2018.Company internships (%),0.91
+2021.International board (%),2022.International board (%),0.91
+2022.International board (%),2021.International board (%),0.91
+2019.Rank in 2018,2022.Rank in 2021,0.91
+2022.Rank in 2021,2019.Rank in 2018,0.91
+2020.Rank in 2018,2022.Rank in 2020,0.91
+2022.Rank in 2020,2020.Rank in 2018,0.91
+2018.#,2020.#,0.91
+2020.#,2018.#,0.91
+2018.Faculty with doctorates (%),2019.Faculty with doctorates (%),0.91
+2019.Faculty with doctorates (%),2018.Faculty with doctorates (%),0.91
+2020.#,2020.Rank in 2018,0.91
+2020.Rank in 2018,2020.#,0.91
+2021.International students (%),2018.International students (%),0.91
+2018.International students (%),2021.International students (%),0.91
+2018.3-year average,2022.Rank in 2020,0.91
+2022.Rank in 2020,2018.3-year average,0.91
+2022.Threeyear average,2018.3-year average,0.9
+2018.3-year average,2022.Threeyear average,0.9
+2018.3-year average,2020.#,0.9
+2020.#,2018.3-year average,0.9
+2019.International work mobility rank,2021.International work mobility rank,0.9
+2021.International work mobility rank,2019.International work mobility rank,0.9
+2021.Salary percentage increase,2020.Salary percentage increase,0.9
+2020.Salary percentage increase,2021.Salary percentage increase,0.9
+2022.Threeyear average,2020.Rank in 2018,0.9
+2020.Rank in 2018,2022.Threeyear average,0.9
+2018.#,2022.Threeyear average,0.9
+2022.Threeyear average,2018.#,0.9
+2022.International students (%),2019.International students (%),0.9
+2019.International students (%),2022.International students (%),0.9
+2018.3-year average,2022.Rank in 2021,0.9
+2022.Rank in 2021,2018.3-year average,0.9
+2019.Weighted salary (US$),2022.Weighted salary (US$),0.9
+2022.Weighted salary (US$),2019.Weighted salary (US$),0.9
+2019.Salary today (US$),2022.Weighted salary (US$),0.9
+2022.Weighted salary (US$),2019.Salary today (US$),0.9
+2020.Careers service rank,2019.Careers service rank,0.9
+2019.Careers service rank,2020.Careers service rank,0.9
+2022.Female faculty (%),2019.Female faculty (%),0.9
+2019.Female faculty (%),2022.Female faculty (%),0.9
+2018.Salary percentage increase,2019.Salary percentage increase,0.9
+2019.Salary percentage increase,2018.Salary percentage increase,0.9
+2018.International mobility rank,2020.International work mobility rank,0.89
+2020.International work mobility rank,2018.International mobility rank,0.89
+2022.Rank in 2021,2018.#,0.89
+2018.#,2022.Rank in 2021,0.89
+2022.Value for money rank,Value for Money Index,0.89
+Value for Money Index,2022.Value for money rank,0.89
+2022.Salary percentage increase,2021.Salary percentage increase,0.89
+2021.Salary percentage increase,2022.Salary percentage increase,0.89
+2022.International students (%),2018.International students (%),0.89
+2018.International students (%),2022.International students (%),0.89
+2022.International course experience rank,2021.International course experience rank,0.89
+2021.International course experience rank,2022.International course experience rank,0.89
+2019.Salary percentage increase,2020.Salary percentage increase,0.89
+2020.Salary percentage increase,2019.Salary percentage increase,0.89
+2020.Faculty with doctorates (%),2019.Faculty with doctorates (%),0.89
+2019.Faculty with doctorates (%),2020.Faculty with doctorates (%),0.89
+2022.Weighted salary (US$),2018.Salary today (US$),0.89
+2018.Salary today (US$),2022.Weighted salary (US$),0.89
+2022.International course experience rank,2019.International course experience rank,0.89
+2019.International course experience rank,2022.International course experience rank,0.89
+2022.Average course length (months),2018.Course length (months),0.89
+2018.Course length (months),2022.Average course length (months),0.89
+2022.Threeyear average,2019.Rank in 2017,0.89
+2019.Rank in 2017,2022.Threeyear average,0.89
+2020.Rank in 2018,2022.Rank in 2021,0.88
+2022.Rank in 2021,2020.Rank in 2018,0.88
+2019.Rank in 2017,2022.Rank in 2021,0.88
+2022.Rank in 2021,2019.Rank in 2017,0.88
+2019.Rank in 2017,2020.#,0.88
+2020.#,2019.Rank in 2017,0.88
+2020.Careers service rank,2021.Careers service rank,0.88
+2021.Careers service rank,2020.Careers service rank,0.88
+2018.International mobility rank,2021.International work mobility rank,0.88
+2021.International work mobility rank,2018.International mobility rank,0.88
+2022.International work mobility rank,2020.International work mobility rank,0.88
+2020.International work mobility rank,2022.International work mobility rank,0.88
+2022.Rank in 2020,2019.Rank in 2017,0.88
+2019.Rank in 2017,2022.Rank in 2020,0.88
+2020.Faculty with doctorates (%),2021.Faculty with doctorates (%),0.87
+2021.Faculty with doctorates (%),2020.Faculty with doctorates (%),0.87
+2018.Female faculty (%),2021.Female faculty (%),0.87
+2021.Female faculty (%),2018.Female faculty (%),0.87
+Value for Money Index,2021.Value for money rank,0.87
+2021.Value for money rank,Value for Money Index,0.87
+2021.Aims achieved (%),2022.Aims achieved (%),0.87
+2022.Aims achieved (%),2021.Aims achieved (%),0.87
+2018.International board (%),2021.International board (%),0.87
+2021.International board (%),2018.International board (%),0.87
+2020.Value for money rank,Value for Money Index,0.86
+Value for Money Index,2020.Value for money rank,0.86
+2018.Career progress rank,2019.Career progress rank,0.86
+2019.Career progress rank,2018.Career progress rank,0.86
+2019.Languages,2021.Extra languages,0.86
+2021.Extra languages,2019.Languages,0.86
+2020.International course experience rank,2022.International course experience rank,0.86
+2022.International course experience rank,2020.International course experience rank,0.86
+2022.Female faculty (%),2018.Female faculty (%),0.86
+2018.Female faculty (%),2022.Female faculty (%),0.86
+2022.International work mobility rank,2018.International mobility rank,0.85
+2018.International mobility rank,2022.International work mobility rank,0.85
+2019.Women on board (%),2020.Women on board (%),0.85
+2020.Women on board (%),2019.Women on board (%),0.85
+2020.Women on board (%),2021.Women on board (%),0.84
+2021.Women on board (%),2020.Women on board (%),0.84
+Career progress rank 2020-2019,Career progress rank 2021-2020,0.84
+Career progress rank 2021-2020,Career progress rank 2020-2019,0.84
+2021.Career progress rank,2020.Career progress rank,0.84
+2020.Career progress rank,2021.Career progress rank,0.84
+2022.Salary percentage increase,2020.Salary percentage increase,0.84
+2020.Salary percentage increase,2022.Salary percentage increase,0.84
+2019.Value for money rank,Value for Money Index,0.84
+Value for Money Index,2019.Value for money rank,0.84
+2020.Faculty with doctorates (%),2022.Faculty with doctorates (%),0.83
+2022.Faculty with doctorates (%),2020.Faculty with doctorates (%),0.83
+2018.Languages,2021.Extra languages,0.83
+2021.Extra languages,2018.Languages,0.83
+2022.Careers service rank,2021.Careers service rank,0.83
+2021.Careers service rank,2022.Careers service rank,0.83
+2019.International board (%),2021.International board (%),0.83
+2021.International board (%),2019.International board (%),0.83
+2022.International work mobility rank,2019.International work mobility rank,0.83
+2019.International work mobility rank,2022.International work mobility rank,0.83
+2021.Average course length (months),2020.Average course length (months),0.83
+2020.Average course length (months),2021.Average course length (months),0.83
+Career progress rank 2021-2020,Career progress rank 2022-2021,0.82
+Career progress rank 2022-2021,Career progress rank 2021-2020,0.82
+2019.Salary percentage increase,2021.Salary percentage increase,0.82
+2021.Salary percentage increase,2019.Salary percentage increase,0.82
+2019.Career progress rank,2020.Career progress rank,0.81
+2020.Career progress rank,2019.Career progress rank,0.81
+2021.Average course length (months),2018.Course length (months),0.81
+2018.Course length (months),2021.Average course length (months),0.81
+2021.Average course length (months),2022.Average course length (months),0.81
+2022.Average course length (months),2021.Average course length (months),0.81
+2020.Female students (%),2019.Female students (%),0.81
+2019.Female students (%),2020.Female students (%),0.81
+2020.Aims achieved (%),2021.Aims achieved (%),0.81
+2021.Aims achieved (%),2020.Aims achieved (%),0.81
+2022.Women on board (%),2021.Women on board (%),0.8
+2021.Women on board (%),2022.Women on board (%),0.8
+2019.Careers service rank,2021.Careers service rank,0.8
+2021.Careers service rank,2019.Careers service rank,0.8
+2021.Career progress rank,2019.Career progress rank,0.8
+2019.Career progress rank,2021.Career progress rank,0.8
+2021.Career progress rank,2022.Career progress rank,0.79
+2022.Career progress rank,2021.Career progress rank,0.79
+2020.Female students (%),2018.Female students (%),0.79
+2018.Female students (%),2020.Female students (%),0.79
+2022.Salary percentage increase,2019.Salary percentage increase,0.78
+2019.Salary percentage increase,2022.Salary percentage increase,0.78
+2018.Salary percentage increase,2020.Salary percentage increase,0.78
+2020.Salary percentage increase,2018.Salary percentage increase,0.78
+Career progress rank 2020-2019,Career progress rank 2022-2021,0.77
+Career progress rank 2022-2021,Career progress rank 2020-2019,0.77
+2018.International board (%),2022.International board (%),0.76
+2022.International board (%),2018.International board (%),0.76
+2019.Faculty with doctorates (%),2021.Faculty with doctorates (%),0.76
+2021.Faculty with doctorates (%),2019.Faculty with doctorates (%),0.76
+2021.Female students (%),2019.Female students (%),0.75
+2019.Female students (%),2021.Female students (%),0.75
+2022.Career progress rank,2020.Career progress rank,0.75
+2020.Career progress rank,2022.Career progress rank,0.75
+2022.Aims achieved (%),2020.Aims achieved (%),0.75
+2020.Aims achieved (%),2022.Aims achieved (%),0.75
+2019.Female students (%),2018.Female students (%),0.74
+2018.Female students (%),2019.Female students (%),0.74
+2019.Women on board (%),2021.Women on board (%),0.74
+2021.Women on board (%),2019.Women on board (%),0.74
+2020.Faculty with doctorates (%),2018.Faculty with doctorates (%),0.74
+2018.Faculty with doctorates (%),2020.Faculty with doctorates (%),0.74
+2022.International board (%),2019.International board (%),0.74
+2019.International board (%),2022.International board (%),0.74
+2021.Overall satisfaction,2022.Overall satisfaction,0.74
+2022.Overall satisfaction,2021.Overall satisfaction,0.74
+2019.Faculty with doctorates (%),2022.Faculty with doctorates (%),0.73
+2022.Faculty with doctorates (%),2019.Faculty with doctorates (%),0.73
+2022.Careers service rank,2020.Careers service rank,0.73
+2020.Careers service rank,2022.Careers service rank,0.73
+2021.Female students (%),2020.Female students (%),0.72
+2020.Female students (%),2021.Female students (%),0.72
+2021.Career progress rank,Career progress rank 2021-2020,0.72
+Career progress rank 2021-2020,2021.Career progress rank,0.72
+2018.Salary percentage increase,2022.Salary percentage increase,0.72
+2022.Salary percentage increase,2018.Salary percentage increase,0.72
+2018.Faculty with doctorates (%),2022.Faculty with doctorates (%),0.71
+2022.Faculty with doctorates (%),2018.Faculty with doctorates (%),0.71
